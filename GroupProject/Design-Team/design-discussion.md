@@ -10,7 +10,9 @@ and "User" instead
 4) Missing function parameters
 
 ### pros
-
+1) Simple and clear format
+2) Met nearly all requirements in assignment description
+3) Detailed description (md) file.
 
 ## ddong31
 
