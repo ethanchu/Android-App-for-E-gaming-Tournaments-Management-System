@@ -50,6 +50,8 @@ relations and describes most of the relations and gives qty's for everything whi
 
 ### pros
 1) Good use of bold text makes it easy to read
+2) detailed decription for each method.
+3) Meet the assignment requirements.
 
 
 # Team Design
