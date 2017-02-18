@@ -1,7 +1,7 @@
 # Individual designs
 
 ## agifft3
-
+![agifft3](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Design-Team/agifft3.png)
 ### cons
 1) Do not need Database class. That will be handled by the implementation of the other classes
 2) The ManagerUI and UserUI classes are simply miss named; can be called "Manager"
@@ -15,7 +15,7 @@ and "User" instead
 3) Detailed description (md) file.
 
 ## ddong31
-
+![ddong31](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Design-Team/ddong31.png)
 ### cons
 1) Missing function parameters
 2) Classes look like functions; should be named more as a class e.g. "AddPlayer()" should
@@ -30,7 +30,7 @@ be "Player"
 3) Synchronize via underlying database.
 
 ## jhoffman48
-
+![jhoffman48](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Design-Team/jhoffman48.png)
 ### cons
 1) `startMatch` should be a method in tournament
 2) Need relationship between `PlayerSystem` and `TournamentResult`
@@ -45,7 +45,7 @@ relations and describes most of the relations and gives qty's for everything whi
 
 
 ## yzhu421
-
+![yzhu421](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Design-Team/yzhu421.png)
 ### cons
 1) Some confusion between `StartTournament` class and `StartTournament` method
 2) Doesn't need relations between classes for every method
@@ -57,7 +57,7 @@ relations and describes most of the relations and gives qty's for everything whi
 
 
 # Team Design
-
+![Team Design](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Design-Team/team-design.png)
 ### reasoning
 1) Clear
 2) Simple, so easier to make changes to
