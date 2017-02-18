@@ -63,8 +63,11 @@ relations and describes most of the relations and gives qty's for everything whi
 Our team design is based off of jhoffman48's because of the relatively few design modifications necessary after the understanding of the requirements that we had come to as a team. Each of the individual designs shared much of the common functionality described by the design document such as
 1) Controllers for handling the Manager and Player system components
 2) Common class design with respect to Users, Tournaments, and Matches
-3) Attributes as described in the design document
+3) Attributes and operations as described in the design document
 4) Management methods common to each of the classes
+
+### differences
+For the changes we made to Josh’s original UML, they were mostly to clarify the relationships between PlayerSystem and TournamentResult and include the quantity of classes along with the type of relationship.  Additionally some small changes were made to better address some of the requirements such as adding a TournamentState to the TournamentResult that will capture whether a tournament that ended was completed or was cancelled and refunded.  Additionally we clarified or expanded on the data types used or returned by the various operations such as +getPrizes which switched to a list of integers vs a single integer and the addition of attribute entryFee. These small additions better meet the requirements and will help with implementing the system described in the UML once we begin coding
 
 
 ### Summary
