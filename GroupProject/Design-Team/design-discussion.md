@@ -25,7 +25,9 @@ be "Player"
 5) Communication implied between interfaces via the database
 
 ### pros
-
+1) Simple to understand.
+2) Different interface for manager and players.
+3) Synchronize via underlying database.
 
 ## jhoffman48
 
