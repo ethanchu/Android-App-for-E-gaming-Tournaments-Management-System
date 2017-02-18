@@ -40,7 +40,7 @@ relations and describes most of the relations and gives qty's for everything whi
 
 
 
-## yichen
+## yzhu421
 
 ### cons
 1) Some confusion between `StartTournament` class and `StartTournament` method
