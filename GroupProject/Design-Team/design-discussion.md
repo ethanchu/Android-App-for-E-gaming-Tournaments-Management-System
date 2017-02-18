@@ -59,19 +59,23 @@ relations and describes most of the relations and gives qty's for everything whi
 # Team Design
 ![Team Design](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Design-Team/team-design.png)
 ### reasoning
-1) Clear
-2) Simple, so easier to make changes to
+
+Our team design is based off of jhoffman48's because of the relatively few design modifications necessary after the understanding of the requirements that we had come to as a team. Each of the individual designs shared much of the common functionality described by the design document such as
+1) Controllers for handling the Manager and Player system components
+2) Common class design with respect to Users, Tournaments, and Matches
+3) Attributes as described in the design document
+4) Management methods common to each of the classes
 
 
 ### Summary
 
-There were a lot of lessons we learned from our group discussion.  But first we were all very happy with our team members and their deliverables.  We had active participation from everyone and it was a positive experience. 
+There were a lot of lessons we learned from our group discussion.  But first we were all very happy with our team members and their deliverables.  We had active participation from everyone and it was a positive experience.
 
- 
+
 On the design side we found a lot of value in comparing independently created UML diagrams.  There was a lot of commonality between our designs and that gave us confidence in a clear baseline that covered the majority of the requirements.  With a solid foundation we were able to focus mostly on the small differences in implementation.
 
- 
-The differences in the individual designs also gave us some learning experiences.  These helped to highlight requirements that were hard to interpret or open ended and let do discussions on figuring out how to resolve those requirements.  Some we decided were not directly applicable to a UML and would be more in the implementation such as using a databse.  Other requirements we had to figure out how to resolve across our different UML’s such as giving refunds.
- 
 
-For the experience within our teamwork we learned the value of feedback.  None of our designs were perfect, they all had things the designer forgot or implemented in a way that may not meet the requirements.  Our team design is definitely better than any individuals a a result of our discussions.  We also did a good job of both accepting and forming critiques in individual designs which helped to keep the discussions positive, kept us focused on the goals, and left more time for our team design. 
+The differences in the individual designs also gave us some learning experiences.  These helped to highlight requirements that were hard to interpret or open ended and let do discussions on figuring out how to resolve those requirements.  Some we decided were not directly applicable to a UML and would be more in the implementation such as using a databse.  Other requirements we had to figure out how to resolve across our different UML’s such as giving refunds.
+
+
+For the experience within our teamwork we learned the value of feedback.  None of our designs were perfect, they all had things the designer forgot or implemented in a way that may not meet the requirements.  Our team design is definitely better than any individuals a a result of our discussions.  We also did a good job of both accepting and forming critiques in individual designs which helped to keep the discussions positive, kept us focused on the goals, and left more time for our team design.
