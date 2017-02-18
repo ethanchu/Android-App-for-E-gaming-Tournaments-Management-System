@@ -11,7 +11,6 @@ and "User" instead
 
 ### pros
 
-![agifft3 UML](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Design-Individual/agifft3/design.png)
 
 ## ddong31
 
