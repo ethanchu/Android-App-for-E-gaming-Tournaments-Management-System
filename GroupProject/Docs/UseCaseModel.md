@@ -8,7 +8,7 @@
 
 *This section should contain a use case diagram with all the actors and use cases for the system, suitably connected.*
 
-![use case diagram](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/Docs/images/UseCaseDiagram.png)
+![use case diagram](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Docs/images/UseCaseDiagram.PNG)
 
 ## 2 Use Case Descriptions
 
@@ -18,7 +18,7 @@
 
 This section lists each use case that the player can interact with.
 
-
+#### View Match List
 *Requirements:*
 This use case must allow the actor to view a list of all matches for a tournament and the attributes of a match such as players involved in the match, the state of the match (waiting, started, finished, etc.) and the result of the match if completed.
 
