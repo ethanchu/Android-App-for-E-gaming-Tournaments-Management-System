@@ -18,15 +18,13 @@
 
 ### 1.3 System Environment
 
-*Describe the hardware and software that the system must operate in and interact with.*
-
 #### Hardware
 
-**This application requires hardware compliant with the Android Compatibility Definition Document for Android 4.4.  The reference for this application is Revision 1 dated November 27, 2013.  A link to the document is available at the end of this section.  This document requires navigation user inputs such as Home, Recent, and Back buttons as well as hardware input compatible with screen navigation, entry selection, and keyboard input.  Additionally, a screen with sufficient resolution to render complex applications is required.  A link to the Android documentation is here: https://static.googleusercontent.com/media/source.android.com/en//compatibility/4.4/android-4.4-cdd.pdf**
+This application requires hardware compliant with the Android Compatibility Definition Document for Android 4.4.  The reference for this application is Revision 1 dated November 27, 2013.  A link to the document is available at the end of this section.  This document requires navigation user inputs such as Home, Recent, and Back buttons as well as hardware input compatible with screen navigation, entry selection, and keyboard input.  Additionally, a screen with sufficient resolution to render complex applications is required.  A link to the Android documentation is here: https://static.googleusercontent.com/media/source.android.com/en//compatibility/4.4/android-4.4-cdd.pdf
 
 #### Software
 
-**Android Operating system version 4.4 "Kitkat" or newer is required.**
+Android Operating system version 4.4 "Kitkat" or newer is required.
 
 
 ## 2 Architectural Design
@@ -39,15 +37,12 @@
 
 **The component diagrams includes several components. Tournament UI is mainly the application UI, which can choose different modes(player mode and manager mode). Manager interactively works with Player and Tournament to manage the user and tournament separately; and connect with database to retrieve the tournament/player information. Tournament retrieve players info from Player and build up the matchlist. Player and Tournament all need to work with database to store/extract persistent information of matchlist, tournament data and player data.**
 
-**I think this is required**
 
 
 ### 2.2 Deployment Diagram
 ![Deployment Diagram](./images/deployment_diagram.png)
 *This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
 
-
-**I (agifft3) dont think this is required, we should explain that this is deployed on one device with no other interactions. There is a single deployment on hardwre that is controlled by the Android and the deployment of key components with the device is handled by the operating system.**
 
 ## 3 Low-Level Design
 
@@ -56,15 +51,13 @@
 *Tournament class and Match class implement the functionality for Tournament component. Tournament class interacts with Match class via schedule/start/end match operations to manage the matches inside Tournament component. ManagementSystem class and TournamentResult class implement the functionality for Manager component. ManagementSystem class works with User class to implement the function of Manage User. ManagementSystem achieve the manage tournament goal through the interconnection with Tournament class. PlayerSystem and User class implement the functionality for Player component. And Tournament&Match class interactively work with User class to achieve the function of Manage Player.*
 
 ### 3.1 Class Diagram
-![Class Diagram](./images/UML_class_diagram.png)
-*In the case of an OO design, the internal structure of a software component would typically be expressed as a UML class diagram that represents the static class structure for the component and their relationships.*
 
-**This should be copy-pasted from our previous submission?**
+![Class Diagram](./images/UML_class_diagram.png)
+
+
 ### 3.2 Other Diagrams
 
-*<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
-
-**As this section is marked optional we should de-prioritize it for now until we re finished with required sections**
+No othe diagrams are required to capture the design of this application
 
 ## 4 User Interface Design
 *For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
