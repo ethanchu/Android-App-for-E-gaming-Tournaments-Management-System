@@ -164,4 +164,4 @@ Implements the software as per-spec.
 #### Business Analyst
 Gathers requirements and creates specification documentation.
 
-- *Table showing which team member(s) has which role(s)*
+![jhoffman48](images/teamroles.png)
