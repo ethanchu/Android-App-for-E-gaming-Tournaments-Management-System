@@ -271,4 +271,28 @@ The Actor must be Manager.
  - The system displays warning that an active tournament already exists and a new tournament cannot be created.
  - The system returns to a the Manger home screen.
 
+#### View House Profits
 
+*Requirements:* This Use Case shows the historical house profits to the Actor
+
+*Pre-conditions:* There must not be an Active Tournament.
+The Actor must be Manager.
+
+*Post-conditions:* There is no state change to the system as a result of this action but the post condition is a GUI change displaying the information described in the Requirements.
+
+*Scenarios, Normal Event Sequence:* 
+
+ - The Actor enters the application and selects their role as Manager.
+ - The Actor clicks a button to View House Profits
+ - The system changes the GUI to a list of house profits
+
+*Scenarios, Exceptional Event Sequence (a tournament is ongoing):*
+
+ - The Actor enters the application and selects their role as Manager.
+ - There is no button to view House Profits, this use case cannot be performed
+
+*Scenarios, Exceptional Event Sequence (no tournaments have been completed, no house profits):*
+
+ - The Actor enters the application and selects their role as Manager.
+ - The Actor clicks a button to View House Profits
+ - The system changes the GUI to a list of house profits, this list may be blank or empty
