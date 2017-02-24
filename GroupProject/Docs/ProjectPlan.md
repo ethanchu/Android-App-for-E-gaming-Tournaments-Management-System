@@ -12,25 +12,6 @@ tournament patrons to view their winnings in all of the tournaments they have pa
 ## 2 Process Description
 
 
-Should actually be development cycle processes.
-"Gather Requirements > Create Test Plan > Development > Testing/Verification > Delivery"?
-Could
-
-yea and then i think we can split those into somewhat parallel tasks based on
-classes / functionality like we can maybe say the managementsystem and tournament
-classes need to be somewhat developed together where the user class can just be a
-placeholder as far as that development goes (its mostly just pointers to User objects
-in management / tournament) where the User and Player System development may need to be
-closer together
-
-### Process
-#### Description
-#### Entrance Criteria
-#### Exit Criteria
-
-
-
-
 ### Process
 Gather Requirements
 #### Description
@@ -164,4 +145,4 @@ Implements the software as per-spec.
 #### Business Analyst
 Gathers requirements and creates specification documentation.
 
-![jhoffman48](images/teamroles.png)
+![teamroles](images/teamroles.png)
