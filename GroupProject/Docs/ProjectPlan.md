@@ -50,6 +50,16 @@ as well as interfaces they provide.
 
 
 ### Process
+Create database tables
+#### Description
+Using the application design, create tables in the database backend.
+#### Entrance Criteria
+Application design has been completed.
+#### Exit Criteria
+Database tables have been created.
+
+
+### Process
 Build the tournament module
 #### Description
 Code the tournament module.
