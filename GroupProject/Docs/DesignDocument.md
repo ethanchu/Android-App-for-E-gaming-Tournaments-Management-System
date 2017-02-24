@@ -34,7 +34,7 @@
 *The architecture provides the high-level design view of a system and provides a basis for more detailed design work. These subsections describe the top-level components of the system you are building and their relationships.*
 
 ### 2.1 Component Diagram
-![Component Diagram](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Docs/images/component_diagram.png)
+![Component Diagram](./images/component_diagram.png)
 *This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
 
 **The component diagrams includes several components. Tournament UI is mainly the application UI, which can choose different modes(player mode and manager mode). Manager interactively works with Player and Tournament to manage the user and tournament separately; and connect with database to retrieve the tournament/player information. Tournament retrieve players info from Player and build up the matchlist. Player and Tournament all need to work with database to store/extract persistent information of matchlist, tournament data and player data.**
@@ -43,7 +43,7 @@
 
 
 ### 2.2 Deployment Diagram
-![Deployment Diagram](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Docs/images/deployment_diagram.png)
+![Deployment Diagram](./images/deployment_diagram.png)
 *This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
 
 
