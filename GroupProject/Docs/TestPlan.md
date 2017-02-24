@@ -44,3 +44,6 @@
 ## 2 Test Cases
 
 *This section should be the core of this document. You should provide a table of test cases, one per row. For each test case, the table should provide its purpose, the steps necessary to perform the test, the expected result, the actual result (to be filled later), pass/fail information (to be filled later), and any additional information you think is relevant.*
+| Purpose		| Steps    | Expected Results | Actual Results | Result (P/F)| Notes |
+| :----------| :------- | :----------------| :--------------| :-----------| :------| 
+| Test app	| Open App 	| App opened | App opened | P | |
