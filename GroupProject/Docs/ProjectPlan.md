@@ -12,146 +12,131 @@ tournament patrons to view their winnings in all of the tournaments they have pa
 ## 2 Process Description
 
 
-### add player (manager)
+Should actually be development cycle processes.
+"Gather Requirements > Create Test Plan > Development > Testing/Verification > Delivery"?
+Could
+
+yea and then i think we can split those into somewhat parallel tasks based on
+classes / functionality like we can maybe say the managementsystem and tournament
+classes need to be somewhat developed together where the user class can just be a
+placeholder as far as that development goes (its mostly just pointers to User objects
+in management / tournament) where the User and Player System development may need to be
+closer together
+
+### Process
 #### Description
-#### Entrance criteria
+#### Entrance Criteria
 #### Exit Criteria
 
-## Manager Processes
 
-### Add player
+
+
+### Process
+Gather Requirements
 #### Description
-Manager can add players to the system, making them available to be added to tournaments.
-#### Entrance criteria
-The following information about the new player must be available: Name, unique username
-phone number, deck choice.
+Stakeholders work with the customer (Leeory) Tourney Manager in putting together a list of
+functional and non-functional requirements. This document will be the guide for development
+and testing.
+#### Entrance Criteria
+None; start of activities.
 #### Exit Criteria
-New player successfully added to the database.
+Stakeholders and the customer have worked out and agreed upon functionality the Tourney
+Manager is supposed to have.
 
 
-
-### Remove player
+### Process
+Create test plans
 #### Description
-Managers can remove players from the system.
-#### Entrance criteria
-Player username must exist in the database.
+Using the requirements gathered above, the stakeholders and testers build a set of
+acceptance tests that the app must pass before being delivered to the customer.
+#### Entrance Criteria
+Requirements document has been completed.
 #### Exit Criteria
-Data associated with the given user has been removed from the application.
+A suitable testing plan has been created that extensively covers all of the required
+functionality.
 
 
-
-### View totals for every player in the system
+### Process
+Design application
 #### Description
-Display to the manager a list of all of the players in the system and their lifetime prize
-amounts. This list is sorted by the totals.
-#### Entrance criteria
-At least one player must exist in the system.
+Design the classes, UI, and determine any technology that will be required
+(e.g database system, caching system).
+#### Entrance Criteria
+Requirements document has been completed.
 #### Exit Criteria
-Player list has been displayed to the manager.
+A design of the application to be implemented, including classes and how they interact
+as well as interfaces they provide.
 
 
-
-### View player details
+### Process
+Build the tournament module
 #### Description
-After viewing the list of players and totals, the manager may select one of the users
-to view details about that user. This display will show the manager each of the individual
-prizes the player has won.
-#### Entrance criteria
-At least one player must exist to be selected.
+Code the tournament module.
+#### Entrance Criteria
+Application design has been completed.
 #### Exit Criteria
-Requested data has been displayed to the manager.
+Tournament module is completed to spec.
 
 
-
-### View past house profits
+### Process
+Build the manager module
 #### Description
-Display to the manager a list of all of the house profits sorted by either chronological
-order or total
-#### Entrance criteria
-At least one tournament should have been completed.
+Code the manager module.
+#### Entrance Criteria
+Application design has been completed.
 #### Exit Criteria
-List of all house profits has been displayed to the manage.
+Manager module is completed to spec.
 
 
-
-### Create tournament
+### Process
+Build the player module
 #### Description
-Allow the manager to create a new tournament.
-#### Entrance criteria
-Manager must enter the house cut, entry price per player, and the 8 or 16 player usernames.
+Code the player module.
+#### Entrance Criteria
+Application design has been completed.
 #### Exit Criteria
-A view containing the potential prizes and profits will be displayed. The manager will
-then be able to accept the values or make changes. If accepted, the tournament will be
-created in the database.
+Player module is completed to spec.
 
 
-
-### View match list
+### Process
+Create UI
 #### Description
-Display a list of available matches.
-#### Entrance criteria
-Tournament has been started and is not completed.
+Build the UI as designed.
+#### Entrance Criteria
+Application design has been completed.
 #### Exit Criteria
-List of matches has been displayed to the manager.
+UI has been designed and is ready to hook up to underlying modules.
 
 
-
-### Start match
+### Process
+Assemble modules into app
 #### Description
-Start a match that is ready to be played from the match list.
-#### Entrance criteria
-The tournament system has determined match pairings, and the selected match has not yet
-been started.
+Put the modules together into a single app.
+#### Entrance Criteria
+Tournament, manager, and player modules as well as the UI have been completed.
 #### Exit Criteria
-Selected match has been marked as started.
+App is functional.
 
 
-
-### End match
+### Process
+Acceptance testing
 #### Description
-End a match selected from the match list.
-#### Entrance criteria
-Selected match is in the started state and a result must be specified.
+Test the app against the test plan created earlier. If there are discrepancies between
+actual functionality and what has been described by the test plan.
+#### Entrance Criteria
+App is put together and functional.
 #### Exit Criteria
-Selected match has been marked as complete and the result saved.
+App successfully meets all of the acceptance criteria.
 
 
-
-### End tournament
+### Process
+Deliver to customer.
 #### Description
-End the entire tournament. If the tournament was ended before all matches have been 
-completed, refunds will be issued.
-#### Entrance criteria
-Tournament must have been started.
+Hand the completed app off to the customer.
+#### Entrance Criteria
+App meets acceptance criteria.
 #### Exit Criteria
-Tournament marked as closed, and the final result saved; final result can either be
-calculated winnings for each winning (1st, 2nd, 3rd place) player and the house cut, 
-or refunds for the players if ended before all matches have been completed.
-
-
-
-
-## Player Processes
-
-### View match list
-#### Description
-Display a list of available matches including match pairings in ongoing matches,
-matches ready to be played, and results from completed matches.
-#### Entrance criteria
-Tournament has been started and is not completed.
-#### Exit Criteria
-List of matches has been displayed to the manager.
-
-
-
-### View totals for every player in the system
-#### Description
-Display a list of all of the players in the system and their lifetime prize amounts.
-This list is sorted by the totals.
-#### Entrance criteria
-At least one player must exist in the system and no tournament is ongoing.
-#### Exit Criteria
-Player list has been displayed to the manager.
+App is functional.
 
 
 
