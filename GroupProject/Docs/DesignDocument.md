@@ -2,19 +2,18 @@
 
 *This is the template for your design document. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
 
-**Author**: \<person or team name\>
+**Author**: 6300Spring17Team07
 
 ## 1 Design Considerations
 
-*The subsections below describe the issues that need to be addressed or resolved prior to or while completing the design, as well as issues that may influence the design process.*
 
 ### 1.1 Assumptions
 
-*Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
+There are no additional assumptions about the requirements or desired functionality of the TourneyCalc application.  We assume all requirements are outlined in the Assignment 5 description.
 
 ### 1.2 Constraints
 
-*Describe any constraints on the system that have a significant impact on the design of the system.*
+There are no additional constraints on the system besides those outlined in the system environment below.  The TourneyCalc application is being designed to be as flexible as possible as far as platforms it can be deployed on and the required peripherals to interact with the application.  There are no external dependencies besides those listed in the Android Compatibiilty Definition Document.  In fact, the application can run without some of the standard peripherals on most Android devices, for example, no network connectivity or geolocation is required.
 
 ### 1.3 System Environment
 
@@ -29,26 +28,21 @@ Android Operating system version 4.4 "Kitkat" or newer is required.
 
 ## 2 Architectural Design
 
-*The architecture provides the high-level design view of a system and provides a basis for more detailed design work. These subsections describe the top-level components of the system you are building and their relationships.*
-
 ### 2.1 Component Diagram
 ![Component Diagram](./images/component_diagram.png)
-*This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
 
-**The component diagrams includes several components. Tournament UI is mainly the application UI, which can choose different modes(player mode and manager mode). Manager interactively works with Player and Tournament to manage the user and tournament separately; and connect with database to retrieve the tournament/player information. Tournament retrieve players info from Player and build up the matchlist. Player and Tournament all need to work with database to store/extract persistent information of matchlist, tournament data and player data.**
+
+The component diagrams includes several components. Tournament UI is mainly the application UI, which can choose different modes(player mode and manager mode). Manager interactively works with Player and Tournament to manage the user and tournament separately; and connect with database to retrieve the tournament/player information. Tournament retrieve players info from Player and build up the matchlist. Player and Tournament all need to work with database to store/extract persistent information of matchlist, tournament data and player data.
 
 
 
 ### 2.2 Deployment Diagram
 ![Deployment Diagram](./images/deployment_diagram.png)
-*This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
 
 
 ## 3 Low-Level Design
 
-*Describe the low-level design for each of the system components identified in the previous section. For each component, you should provide details in the following UML diagrams to show its internal structure.*
-
-*Tournament class and Match class implement the functionality for Tournament component. Tournament class interacts with Match class via schedule/start/end match operations to manage the matches inside Tournament component. ManagementSystem class and TournamentResult class implement the functionality for Manager component. ManagementSystem class works with User class to implement the function of Manage User. ManagementSystem achieve the manage tournament goal through the interconnection with Tournament class. PlayerSystem and User class implement the functionality for Player component. And Tournament&Match class interactively work with User class to achieve the function of Manage Player.*
+Tournament class and Match class implement the functionality for Tournament component. Tournament class interacts with Match class via schedule/start/end match operations to manage the matches inside Tournament component. ManagementSystem class and TournamentResult class implement the functionality for Manager component. ManagementSystem class works with User class to implement the function of Manage User. ManagementSystem achieve the manage tournament goal through the interconnection with Tournament class. PlayerSystem and User class implement the functionality for Player component. And Tournament&Match class interactively work with User class to achieve the function of Manage Player.
 
 ### 3.1 Class Diagram
 
@@ -57,7 +51,7 @@ Android Operating system version 4.4 "Kitkat" or newer is required.
 
 ### 3.2 Other Diagrams
 
-No othe diagrams are required to capture the design of this application
+No othe diagrams are required to capture the design of this application.
 
 ## 4 User Interface Design
 *For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
