@@ -31,7 +31,7 @@
 
 ### 1.3 Adequacy Criterion
 
-*Define how you are going to assess the quality of your test cases. Typically, this involves some form of functional or structural coverage. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
+*The functional test will be used at the early stage of the design at all levels to catch potential logic defects. The test data selection will depend on identifying testable features, identifying categories and partitioning categories into choices and identifying constraints among choices etc. In addition, there will be stress test that randomly enter values to test reliability and stability of the app. Once the app is designed, structural methods will be employed to measure the performance of the code.*
 
 ### 1.4 Bug Tracking
 
