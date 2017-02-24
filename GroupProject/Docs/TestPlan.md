@@ -27,7 +27,7 @@
 
 ### 1.2 Test Selection
 
-*Here you should discuss how you are going to select your test cases, that is, which black-box and/or white-box techniques you will use. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
+*In our design, we are going to include Component Unit Testing, System Testing and Stress Testing. We will use both black-box techniques and white-box techniques. Black-box techniques will be primarily used for functional testing in the early design to catch logic defects at all levels. It does not require the code. Once the software app is designed, we will employ while-box techniques for structural testing to test the code and logic branch via Junit and Android Studio. This technique can also be used to compare test suits and allows for covering the coded behaviors .*
 
 ### 1.3 Adequacy Criterion
 
