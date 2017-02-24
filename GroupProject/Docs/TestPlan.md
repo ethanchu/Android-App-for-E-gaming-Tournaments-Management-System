@@ -8,23 +8,22 @@
 
 ### 1.1 Overall strategy
 
-*This section should provide details about your unit-, integration-, system-, and regression-testing strategies. In particular, it should discuss which activities you will perform as part of your testing process, and who will perform such activities.*
 
-*The testing process strategy will be split into different phases:
+*The testing process strategy will be split into different phases:*
 
-1) Component Unit Testing
-2) System Testing
-3) Stress Testing
+*1) Component Unit Testing*
+*2) System Testing*
+*3) Stress Testing*
 
-The component unit testing will evaluate the basic functionality for each component. JUnit will be used for component unit testing.
+*The component unit testing will evaluate the basic functionality for each component. JUnit will be used for component unit testing.*
 
-The system and stress testing will have the objective of evaluating the response of the application to a variety of inputs, including corner cases. 
+*The system and stress testing will have the objective of evaluating the response of the application to a variety of inputs, including corner cases.*
 
-The system test will use our general-purpose test cases with an expected outcome. These test cases will mainly focus on the functional requirements of the application. The execution of the system test cases for the application will be through the actual GUI interaction.
+*The system test will use our general-purpose test cases with an expected outcome. These test cases will mainly focus on the functional requirements of the application. The execution of the system test cases for the application will be through the actual GUI interaction.*
 
-The stress test of the application will evaluate the functional/code coverage of a variety of random inputs, include some corner cases. The application is expected to correctly handle this type of input.
+*The stress test of the application will evaluate the functional/code coverage of a variety of random inputs, include some corner cases. The application is expected to correctly handle this type of input.*
 
-The regression testing of the application will consist of the successful execution of both the system and stress test cases.*
+*The regression testing of the application will consist of the successful execution of both the system and stress test cases.*
 
 ### 1.2 Test Selection
 
@@ -39,8 +38,6 @@ The regression testing of the application will consist of the successful executi
 *Describe how bugs and enhancement requests will be tracked.*
 
 ### 1.5 Technology
-
-*Describe any testing technology you intend to use or build (e.g., JUnit, Selenium).*
 
 *JUnit will be used to test the various component testcases. Actual GUI interaction or script inputs will handle system and stress tests.*
 
