@@ -1,6 +1,6 @@
 # Use Case Model
 
-**Author**: agiff3 Team: 6300Spring17Team07
+**Author**: 6300Spring17Team07
 
 ## 1 Use Case Diagram
 
@@ -14,6 +14,7 @@ This section gives an informal description of each use case.
 
 This section lists each use case that the player can interact with.
 
+#### View Match List
 
 *Requirements:*
 This use case must allow the actor to view a list of all matches for a tournament and the attributes of a match such as players involved in the match, the state of the match (waiting, started, finished, etc.) and the result of the match if completed.
