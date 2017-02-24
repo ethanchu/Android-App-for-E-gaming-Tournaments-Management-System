@@ -4,7 +4,7 @@
 
 ## 1 Use Case Diagram
 
-![use case diagram](https://github.gatech.edu/gt-omscs-se-2017spring/6300Spring17Team07/blob/master/GroupProject/Docs/images/UseCaseDiagram.PNG)
+![use case diagram](./images/UseCaseDiagram.PNG)
 
 ## 2 Use Case Descriptions
 
