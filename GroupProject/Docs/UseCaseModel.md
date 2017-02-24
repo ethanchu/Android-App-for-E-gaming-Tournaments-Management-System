@@ -1,6 +1,6 @@
 # Use Case Model
 
-**Author**: agiff3 Team: 6300Spring17Team07
+**Author**: 6300Spring17Team07
 
 ## 1 Use Case Diagram
 
