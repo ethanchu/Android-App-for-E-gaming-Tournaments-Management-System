@@ -1,6 +1,6 @@
 # Project Plan
 
-**Author**: Team 07
+**Author**: 6300Spring17Team07
 
 ## 1 Introduction
 
