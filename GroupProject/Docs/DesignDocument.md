@@ -55,7 +55,7 @@ No othe diagrams are required to capture the design of this application.
 
 ## 4 User Interface Design
 
-![Main Screen](./ui/mainscreen.png)
+![Main Screen](./ui/mainscreen.png)  
 This is the main screen of the application that is displayed when the application is started.
 From here the user can select manager mode or player mode
 
@@ -64,19 +64,19 @@ From here the user can select manager mode or player mode
 If the user selects Player Mode, they will be shown one of two screens depending on if there
 is an active tournament.
 
-![Player Screen Tournament Inactive](./ui/playerscreen_inactivetournament.png)
+![Player Screen Tournament Inactive](./ui/playerscreen_inactivetournament.png)  
 This is the menu that will be displayed to the user if there is no active tournament.
 It will allow the user to view a list of all players.
 
-![Player Screen Tournament Active](./ui/playerscreen_activetournament.png)
+![Player Screen Tournament Active](./ui/playerscreen_activetournament.png)  
 This is the menu that will be displayed to the user if there is an active tournament.
 It will allow the player to view the match list.
 
-![Player List](./ui/userlist.png)
+![Player List](./ui/userlist.png)  
 If there is no ongoing tournament, the user will be able to see a list of players
 and their total prizes.
 
-![Match List](./ui/matchlist.png)
+![Match List](./ui/matchlist.png)  
 If there is an ongoing tournament, the user will be able to see a list of ongoing
 and completed matches.
 
@@ -85,42 +85,42 @@ and completed matches.
 Similarly to the Player Mode, the Manager Mode will have two different available screens
 depending on if there is a tournament in progress.
 
-![Manager Screen Tournament Inactive](./ui/managerscreen_inactivetournament.png)
+![Manager Screen Tournament Inactive](./ui/managerscreen_inactivetournament.png)  
 If there is no ongoing tournament, the manager will be able to manage users, create
 tournaments, and view house profits
 
-![Manager Screen Tournament Aactive](./ui/managerscreen_activetournament.png)
+![Manager Screen Tournament Aactive](./ui/managerscreen_activetournament.png)  
 If there is an active tournament, the manager will be presented with the option to view the
 match list and manage the tournament.
 
-![Match List](./ui/matchlist.png)
+![Match List](./ui/matchlist.png)  
 If there is an ongoing tournament, the manager will be able to see a list of ongoing
 and completed matches. From here the manager will be able to start matches as well as end
 matches and record the result.
 
-![Player List](./ui/userlist.png)
+![Player List](./ui/userlist.png)  
 As with the user, the manager will be able to view a list of players and their lifetime
 winnings. However if the manager selects one of the users, they will be taken to the player
 detail view.
 
-![Player Details](./ui/playerdetails.png)
+![Player Details](./ui/playerdetails.png)  
 Here the manager can view details about a player, see their historical match history and
 winnings, as well as delete a player if necessary.
 
-![Create Player](./ui/createplayer.png)
+![Create Player](./ui/createplayer.png)  
 From the user screen, a manager can also add enter player details and add them to the system.
 
-![Create Tournament](./ui/createtournament.png)
+![Create Tournament](./ui/createtournament.png)  
 From the user screen, if there is not an active tournament the manager will be able to enter
 details about the tournament as well as add users. Upon clicking the Create Tournament
 button, they will be directed to a confirmation screen. The tournament will not be created
 at this point.
 
-![Confirm Tournament](./ui/tournamentconfirmation.png)
+![Confirm Tournament](./ui/tournamentconfirmation.png)  
 Here the manager will be shown prizes for the winners of the tournament as well as the expected
 house cut of the profits. The tournament will be created and started after the manager
 presses the Create Tournament button.
 
-![House Profits](./ui/houseprofits.png)
+![House Profits](./ui/houseprofits.png)  
 From this screen the manager will be able to see a list of tournaments and the profit that
 the house made from each.
