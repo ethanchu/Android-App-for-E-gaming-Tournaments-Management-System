@@ -2,7 +2,7 @@
 
 *This is the template for your test plan. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
 
-**Author**: \<person or team name\>
+**Author**: Team 07
 
 ## 1 Testing Strategy
 
@@ -49,7 +49,7 @@ problem has been resolved.
 
 ###Player UI
 
-| Purpose		| Steps    | Expected Results | Actual Results | Result (P/F)| Notes |
+| Purpose		| Steps     | Expected Results | Actual Results | Result (P/F)| Notes |
 | :----------| :------- | :----------------| :--------------| :-----------| :------|
 | Test app works	| Open App 	| App opened | App opened | P | |
 | Test player UI	| Choose player mode	| Player UI | Player UI  | P  | |
