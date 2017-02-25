@@ -76,7 +76,7 @@ It will allow the player to view the match list.
 If there is no ongoing tournament, the user will be able to see a list of players
 and their total prizes.
 
-![Match List](./ui/matchlist.png)  
+![Match List](./ui/player_matchlist.png)  
 If there is an ongoing tournament, the user will be able to see a list of ongoing
 and completed matches.
 
@@ -93,7 +93,7 @@ tournaments, and view house profits
 If there is an active tournament, the manager will be presented with the option to view the
 match list and manage the tournament.
 
-![Match List](./ui/matchlist.png)  
+![Match List](./ui/manager_matchlist.png)  
 If there is an ongoing tournament, the manager will be able to see a list of ongoing
 and completed matches. From here the manager will be able to start matches as well as end
 matches and record the result.
