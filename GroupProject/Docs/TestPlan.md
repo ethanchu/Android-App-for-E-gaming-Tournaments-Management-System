@@ -53,8 +53,8 @@ problem has been resolved.
 | :----------| :------- | :----------------| :--------------| :-----------| :------|
 | Test app works	| Open App 	| App opened | App opened | P | |
 | Test player UI	| Choose player mode	| Player UI | Player UI  | P  | |
-| View total player prizes | N/A | Show totals for every player sorted by total prizes | N/A | P | When there is no tournament onging | 
-| View match list | N/A | A list of match and the status | N/A | P | When there is tournament onging | 
+| View total player prizes | View Player List | Show totals for every player sorted by total prizes | Show totals for every player sorted by total prizes | P | When there is no tournament onging | 
+| View match list | View Match List | A list of match and the status | A list of match and the status | P | When there is tournament onging | 
 
 ###Manager UI
 
