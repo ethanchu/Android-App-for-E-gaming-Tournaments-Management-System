@@ -72,7 +72,6 @@ problem has been resolved.
 | Add duplicate player to the tournament| Enter username | Player /username/ has already added to the tournament | Player /username/ has apready added to the tournament| P | Add player that is adlready added|
 | Remove player from the tournament| Enter username | Player /username/ removed from the tournament| Player /username/ removed from the tournament| P | Remove players added by mistake |
 | Add player that is not existed in the system | Enter username | Player not existed | Player not exited | P | Add player that is not in the system|
-| Add player that is not existed in the system | Enter username | Player not existed | Player not exited | P | Add player that is not in the system|
 | Start a tournament | Click start the tournament | Please enter either 8 or 16 players | Please enter either 8 or 16 players | P | When the players number is neither 8 or 16 |
 | Start a match | Choose a match from the list and click start | Mark the match as started | Mark the match as started | P | When a tournament is onging |
 | End a match | End the onging match | Specify a result for the ended match | Specify a result for the ended match | P | When a tournament is onging |
