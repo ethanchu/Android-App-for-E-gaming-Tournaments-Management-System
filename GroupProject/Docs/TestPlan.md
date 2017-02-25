@@ -35,7 +35,11 @@
 
 ### 1.4 Bug Tracking
 
-*Describe how bugs and enhancement requests will be tracked.*
+Our implementation of Tourney Manager will simply use the GitHub issue tracking system for
+Bug Tracking. Once identified, the user will create a new issue on GitHub, which will then
+send an email to the development team. The GitHub issue tracking system easily allows us
+to reference pull requests that resolved specific issues and report to users that the
+problem has been resolved.
 
 ### 1.5 Technology
 
