@@ -30,4 +30,21 @@ public class InactivemanagermodeActivity extends AppCompatActivity {
 
     }
 
+    public void viewhouseprofits(View view){
+        //TODO DB Implement
+
+        //end TODO
+        Toast.makeText(InactivemanagermodeActivity.this, "View House Profits!", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(InactivemanagermodeActivity.this, HouseProfitsActivity.class));
+
+    }
+
+    public void viewuserlist(View view){
+        //TODO DB Implement
+
+        //end TODO
+        Toast.makeText(InactivemanagermodeActivity.this, "View Playerlist!", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(InactivemanagermodeActivity.this, UserlistActivity.class));
+
+    }
 }
