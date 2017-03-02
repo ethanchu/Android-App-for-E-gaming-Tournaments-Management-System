@@ -10,17 +10,20 @@ public class Player {
     private final String name;
     private final String username;
     private final String phoneNumber;
+    private final Double winnings;
     private final Deck deck;
 
     public Player(Integer playerId,
                   String name,
                   String username,
                   String phoneNumber,
+                  Double winnings,
                   Deck deck) {
         this.playerId = playerId;
         this.name = name;
         this.username = username;
         this.phoneNumber = phoneNumber;
+        this.winnings = winnings;
         this.deck = deck;
     }
 
@@ -38,6 +41,10 @@ public class Player {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public Double getWinnings() {
+        return winnings;
     }
 
     public Deck getDeck() {

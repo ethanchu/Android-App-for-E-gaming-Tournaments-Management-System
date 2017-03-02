@@ -9,7 +9,6 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import edu.gatech.seclass.tourneymanager.dao.contracts.PlayerContract;
 import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
@@ -159,7 +158,7 @@ public class PlayerDao extends SQLiteOpenHelper {
         Integer deck = cursor.getInt(cursor
                 .getColumnIndexOrThrow(PlayerContract.PlayerEntry.DECK));
 
-        return new Player(playerId, name, userName, phoneNumber,
+       return new Player(playerId, name, userName, phoneNumber, 0.0,
                     Deck.forValue(deck));
     }
 }
