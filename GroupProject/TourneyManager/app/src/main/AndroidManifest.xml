@@ -15,6 +15,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
+        </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.AddPlayerActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
+        </activity>
     </application>
 
 </manifest>
