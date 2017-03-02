@@ -21,15 +21,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        PlayerDao dao = new PlayerDao(getApplicationContext());
-
-        dao.createPlayer("name", "user1", "123-123-1234", Deck.BUZZ);
-        dao.createPlayer("name2", "user", "123", Deck.BUZZ);
-
-        List<Player> players = dao.getPlayers();
-
-        for(Player player : players) {
-            Log.v("main", player.getName());
-        }
     }
 }
