@@ -80,6 +80,9 @@ public class DatabaseHelper {
             SQLiteDatabase db = getReadableDatabase();
         }
 
+        /**
+         * Create the database tables.
+         */
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(PlayerContract.PlayerEntry.CREATE_TABLE);

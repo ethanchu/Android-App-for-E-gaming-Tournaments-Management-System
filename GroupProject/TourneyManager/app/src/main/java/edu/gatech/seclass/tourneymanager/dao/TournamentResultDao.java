@@ -47,6 +47,15 @@ public class TournamentResultDao extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
+    /**
+     * Create a tournament result in the database.
+     * @param tournamentId  the tournament ID
+     * @param playerId1     ID of the first place player
+     * @param playerId2     ID of the second place player
+     * @param playerId3     ID of the third place player
+     * @param profit        house profit from the tournament
+     * @return  ID of the new tournament result entry
+     */
     public Integer createTournamentResult(Integer tournamentId,
                                           Integer playerId1,
                                           Integer playerId2,
@@ -66,6 +75,10 @@ public class TournamentResultDao extends SQLiteOpenHelper {
         return Long.valueOf(ret).intValue();
     }
 
+    /**
+     * Get a list of all tournament results.
+     * @return a list of all tournament results.
+     */
     public List<TournamentResult> getTournamentResults() {
         SQLiteDatabase db = getReadableDatabase();
         List<TournamentResult> ret = new ArrayList<>();

@@ -104,6 +104,11 @@ public class PlayerResultDao extends SQLiteOpenHelper {
         return ret;
     }
 
+    /**
+     * Get the total lifetime winnings for a player
+     * @param playerId  player ID
+     * @return  the sum of all winnings for the player
+     */
     public Double getPlayerTotalWinnings(Integer playerId) {
         SQLiteDatabase db = getReadableDatabase();
 
