@@ -10,8 +10,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.gatech.seclass.tourneymanager.MainActivity">
 
-    <TextView
+
+    <Button
+        android:text="Setup Tournament"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="22dp"
+        android:id="@+id/setupTournament"
+        android:onClick="setupTournament" />
 </RelativeLayout>
