@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:text="Phone number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView2" />
+
+    <Button
+        android:text="Add Player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:id="@+id/button"
+        android:onClick="createplayer" />
+
+    <EditText
+        android:id="@+id/phonenumber"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:text="Deck:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignBaseline="@+id/deck"
+        android:layout_alignBottom="@+id/deck"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_above="@+id/username"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="32dp" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:id="@+id/deck"
+        android:entries="@array/Deck_lists"
+        android:prompt="@string/Deck_name"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/phonenumber"
+        android:layout_alignEnd="@+id/phonenumber"
+        android:layout_toEndOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignStart="@+id/phonenumber" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignStart="@+id/username" />
+
+    <TextView
+        android:text="Username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginBottom="29dp"
+        android:layout_above="@+id/phonenumber"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

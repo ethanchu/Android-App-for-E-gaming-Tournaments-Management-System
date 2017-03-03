@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TourneyManager</string>
+
+    <string name="Deck_name">Deck</string>
+
+    <string-array name="Deck_lists">
+        <item>ENGINEER</item>
+        <item>BUZZ</item>
+        <item>SIDEWAYS</item>
+        <item>WRECK</item>
+        <item>T</item>
+        <item>RAT</item>
+    </string-array>
+
 </resources>
