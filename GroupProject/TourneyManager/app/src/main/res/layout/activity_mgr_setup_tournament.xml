@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_mgr_setup_tournament"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.gatech.seclass.tourneymanager.mgrSetupTournament">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="House Cut (%)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/mgrSetHouseCut"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="Entry fee ($)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/mgrEntreeFee"
+                android:layout_weight="0.50" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Select Players:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mgrPlayerListTitle"
+            android:layout_weight="4"
+            android:textSize="24sp" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentStart="true"
+            android:id="@+id/mgrTourSelPlayers"
+            android:layout_weight="4.33" />
+
+        <Button
+            android:text="Review Tournament Details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mgrReviewTour"
+            android:layout_weight="1"
+            android:onClick="reviewTournament" />
+
+    </LinearLayout>
+
+</RelativeLayout>
