@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,6 @@ public class PlayerDao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(PlayerContract.PlayerEntry.CREATE_TABLE);
     }
 
     @Override
@@ -78,11 +76,8 @@ public class PlayerDao extends SQLiteOpenHelper {
     public Player getPlayer(Integer playerId) {
         SQLiteDatabase db = getReadableDatabase();
 
-
         String selection = PlayerContract.PlayerEntry.ID + " = ?";
         String[] selectionArgs = {playerId.toString()};
-
-        String sortOrder = PlayerContract.PlayerEntry.ID + " ASC";
 
         Cursor cursor = db.query(
                 PlayerContract.PlayerEntry.TABLE_NAME,
@@ -91,7 +86,7 @@ public class PlayerDao extends SQLiteOpenHelper {
                 selectionArgs,
                 null,
                 null,
-                sortOrder);
+                null);
 
         if (cursor.moveToFirst()) {
             return mapCursorToPlayer(cursor);
@@ -107,14 +102,6 @@ public class PlayerDao extends SQLiteOpenHelper {
     public List<Player> getPlayers() {
         SQLiteDatabase db = getReadableDatabase();
         List<Player> ret = new ArrayList<>();
-
-        String[] projection = {
-                PlayerContract.PlayerEntry.ID,
-                PlayerContract.PlayerEntry.NAME,
-                PlayerContract.PlayerEntry.USERNAME,
-                PlayerContract.PlayerEntry.PHONENUMBER,
-                PlayerContract.PlayerEntry.DECK
-        };
 
         String sortOrder = PlayerContract.PlayerEntry.ID + " ASC";
 
@@ -134,19 +121,10 @@ public class PlayerDao extends SQLiteOpenHelper {
         return ret;
     }
 
-    /**
-     * Set the total lifetime winnings amount for a player
-     * @param playerId  ID of the player
-     * @param winnings  total winnings
-     */
-    public void setWinnings(Integer playerId,
-                            Double winnings) {
-    }
-
     //////////////////
     // Util
     //////////////////
-    private Player mapCursorToPlayer(Cursor cursor) {
+    public static Player mapCursorToPlayer(Cursor cursor) {
         Integer playerId = cursor.getInt(cursor
                 .getColumnIndexOrThrow(PlayerContract.PlayerEntry.ID));
         String name = cursor.getString(cursor
@@ -158,7 +136,10 @@ public class PlayerDao extends SQLiteOpenHelper {
         Integer deck = cursor.getInt(cursor
                 .getColumnIndexOrThrow(PlayerContract.PlayerEntry.DECK));
 
-       return new Player(playerId, name, userName, phoneNumber, 0.0,
+        Double winnings = DatabaseHelper.getInstance()
+                .getPlayerResultDao().getPlayerTotalWinnings(playerId);
+
+       return new Player(playerId, name, userName, phoneNumber, winnings,
                     Deck.forValue(deck));
     }
 }

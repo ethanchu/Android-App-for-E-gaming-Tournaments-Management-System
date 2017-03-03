@@ -10,6 +10,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.gatech.seclass.tourneymanager.dao.constants.MatchStatus;
+import edu.gatech.seclass.tourneymanager.dao.contracts.MatchContract;
 import edu.gatech.seclass.tourneymanager.dao.contracts.PlayerContract;
 import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
 import edu.gatech.seclass.tourneymanager.models.Match;
@@ -17,6 +19,15 @@ import edu.gatech.seclass.tourneymanager.models.Player;
 import edu.gatech.seclass.tourneymanager.models.Tournament;
 
 public class MatchDao extends SQLiteOpenHelper {
+
+    String[] projection = {
+            MatchContract.MatchEntry.ID,
+            MatchContract.MatchEntry.TOURNAMENT_ID,
+            MatchContract.MatchEntry.STATUS,
+            MatchContract.MatchEntry.PLAYER1,
+            MatchContract.MatchEntry.PLAYER2,
+            MatchContract.MatchEntry.WINNER
+    };
 
     public MatchDao(Context context) {
         super(context, DatabaseSettings.DATABASE_NAME,
@@ -43,7 +54,28 @@ public class MatchDao extends SQLiteOpenHelper {
      * @return a list of all matches associated with a tournament
      */
     public List<Match> getMatches(Integer tournamentId) {
-        return new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        String selection = MatchContract.MatchEntry.TOURNAMENT_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(tournamentId)};
+
+        String sortOrder = MatchContract.MatchEntry.ID + " DESC";
+
+        Cursor cursor = db.query(
+                MatchContract.MatchEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                sortOrder);
+
+        List<Match> ret = new ArrayList<>();
+        while(cursor.moveToNext()) {
+            ret.add(mapCursorToMatch(cursor));
+        }
+
+        return ret;
     }
 
     /**
@@ -54,9 +86,40 @@ public class MatchDao extends SQLiteOpenHelper {
      * @return ID of the newly created match
      */
     public Integer createMatch(final Integer tournamentId,
-                               final Player player1,
-                               final Player player2) {
-        return 1;
+                               final Integer player1,
+                               final Integer player2) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(MatchContract.MatchEntry.TOURNAMENT_ID, tournamentId);
+        values.put(MatchContract.MatchEntry.PLAYER1, player1);
+        values.put(MatchContract.MatchEntry.PLAYER2, player2);
+        values.put(MatchContract.MatchEntry.STATUS, MatchStatus.NOTSTARTED.getValue());
+
+        long ret = db.insert(MatchContract.MatchEntry.TABLE_NAME, null, values);
+
+        return Long.valueOf(ret).intValue();
+    }
+
+    public void updateMatchStatus(final Integer matchId, MatchStatus matchStatus,
+                                  Integer winnerId) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MatchContract.MatchEntry.STATUS, matchStatus.getValue());
+
+        if(winnerId != null) {
+            contentValues.put(MatchContract.MatchEntry.WINNER, winnerId.toString());
+        }
+
+        String selection = MatchContract.MatchEntry.ID + " = ?";
+        String[] selectionArgs = {matchId.toString()};
+
+        db.update(
+                MatchContract.MatchEntry.TABLE_NAME,
+                contentValues,
+                selection,
+                selectionArgs);
     }
 
     /**
@@ -64,6 +127,7 @@ public class MatchDao extends SQLiteOpenHelper {
      * @param matchId ID of the match to update
      */
     public void startMatch(final Integer matchId) {
+        updateMatchStatus(matchId, MatchStatus.STARTED, null);
     }
 
     /**
@@ -72,5 +136,32 @@ public class MatchDao extends SQLiteOpenHelper {
      * @param playerId  ID of the winning player
      */
     public void endMatch(Integer matchId, Integer playerId) {
+        updateMatchStatus(matchId, MatchStatus.COMPLETED, playerId);
+    }
+
+    //////////////////
+    // Util
+    //////////////////
+    public static Match mapCursorToMatch(Cursor cursor) {
+        Integer matchId = cursor.getInt(cursor
+                .getColumnIndexOrThrow(MatchContract.MatchEntry.ID));
+        Integer status = cursor.getInt(cursor
+                .getColumnIndexOrThrow(MatchContract.MatchEntry.STATUS));
+        Integer tournamentId = cursor.getInt(cursor
+                .getColumnIndexOrThrow(MatchContract.MatchEntry.TOURNAMENT_ID));
+        Integer player1 = cursor.getInt(cursor
+                .getColumnIndexOrThrow(MatchContract.MatchEntry.PLAYER1));
+        Integer player2 = cursor.getInt(cursor
+                .getColumnIndexOrThrow(MatchContract.MatchEntry.PLAYER2));
+        Integer winner = cursor.getInt(cursor
+                .getColumnIndexOrThrow(MatchContract.MatchEntry.WINNER));
+
+        Log.v("in match", winner.toString());
+
+        Player p1 = DatabaseHelper.getInstance().getPlayerDao().getPlayer(player1);
+        Player p2 = DatabaseHelper.getInstance().getPlayerDao().getPlayer(player2);
+        Player w = winner > 0 ? DatabaseHelper.getInstance().getPlayerDao().getPlayer(winner) : null;
+
+        return new Match(matchId, tournamentId, MatchStatus.forValue(status), p1, p2, w);
     }
 }

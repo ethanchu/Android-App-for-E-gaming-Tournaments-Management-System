@@ -16,7 +16,7 @@ public final class PlayerContract {
         public static final String DECK         = "deck";
 
         public static final String CREATE_TABLE = "\n" +
-                "CREATE TABLE " + TABLE_NAME + " (" +
+                "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
                         ID + " INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                         NAME + " VARCHAR(100) NOT NULL,\n" +
                         USERNAME + " VARCHAR(50) NOT NULL UNIQUE,\n" +
