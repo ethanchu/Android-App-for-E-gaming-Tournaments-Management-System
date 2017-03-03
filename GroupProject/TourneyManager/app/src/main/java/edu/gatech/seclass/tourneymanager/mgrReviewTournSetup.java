@@ -18,6 +18,7 @@ import edu.gatech.seclass.tourneymanager.dao.constants.Deck;;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class mgrReviewTournSetup extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class mgrReviewTournSetup extends AppCompatActivity {
         mgrFirstPrize = (TextView)findViewById(R.id.mgrFirstPrize);
         mgrSecondPrize = (TextView)findViewById(R.id.mgrSecondPrize);
         mgrThirdPrize = (TextView)findViewById(R.id.mgrThirdPrize);
-        mgrTournPlayerList = (ListView)findViewById(R.id.mgrTournPlayerList);;
+        mgrTournPlayerList = (ListView)findViewById(R.id.mgrTournPlayerList);
         myPlayers = getPlayersFromdB();
 
         houseCut = getIntent().getExtras().getInt("HouseCut");
@@ -61,10 +62,13 @@ public class mgrReviewTournSetup extends AppCompatActivity {
                 }
             }
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.user_view_row, R.id.userName, tournamentPlayerNames);
+        ArrayList<Player> myPlayerList = new ArrayList<Player>(Arrays.asList(myPlayers));
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.user_view_row, R.id.userName, tournamentPlayerNames);
 
-        mgrTournPlayerList.setAdapter(adapter);
+        PlayerDetailListAdapter a = new PlayerDetailListAdapter(this,myPlayerList);
+
+        //mgrTournPlayerList.setAdapter(adapter);
+        mgrTournPlayerList.setAdapter(a);
         //calculate prizes and set values
         runCalculate();
     }
@@ -92,7 +96,7 @@ public class mgrReviewTournSetup extends AppCompatActivity {
         mgrThirdPrize.setText(Integer.toString((int)(purse * 0.2 + 0.5)));
 
     }
-    public void startTournament(View v){
+    public void startTournament(View v) {
         Tournament t = new Tournament(0,
                 0,
                 TournamentStatus.NOTSTARTED,
@@ -103,8 +107,7 @@ public class mgrReviewTournSetup extends AppCompatActivity {
                 new ArrayList<Match>());
 
 
-
-        Toast.makeText(getApplicationContext(), "Tournament Started" ,
+        Toast.makeText(getApplicationContext(), "Tournament Started",
                 Toast.LENGTH_SHORT).show();
 
     }
@@ -119,7 +122,7 @@ public class mgrReviewTournSetup extends AppCompatActivity {
             allPlayers.add(new Player(i,
                             "player name " + Integer.toString(i),
                             "username" + Integer.toString(i),
-                            "000-000-0000",
+                            Integer.toString(i) + "00-000-0000",
                             i * 3.0,
                             Deck.forValue(0)
                     )

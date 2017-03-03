@@ -1,16 +1,23 @@
 package edu.gatech.seclass.tourneymanager;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
 import edu.gatech.seclass.tourneymanager.models.Player;
@@ -19,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class mgrSetupTournament extends AppCompatActivity {
+public class mgrSetupTournament extends AppCompatActivity implements View.OnClickListener{
 
     private CheckBox user_sel_row_selUser; //used for the checkbox within the user select list layout
     private TextView user_sel_row_userName; //used to display the username within the user select list layout
@@ -27,28 +34,30 @@ public class mgrSetupTournament extends AppCompatActivity {
     private EditText mgrSetHouseCut; //user sets house cut
     private EditText mgrEntreeFee; //user sets entrance fee
     private TextView mgrPlayerListTitle; //used as something to anchor errors in the player list
-    private Player[] myPlayers;
+    private ArrayList<Player> myPlayers;
+    Boolean[] PlayerSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mgr_setup_tournament);
 
-        user_sel_row_selUser = (CheckBox)findViewById(R.id.selUser);
-        user_sel_row_userName = (TextView)findViewById(R.id.userName);
+        user_sel_row_selUser = (CheckBox)findViewById(R.id.selUser_check);
+        user_sel_row_userName = (TextView)findViewById(R.id.selUser_userName);
         mgrTourSelPlayers = (ListView)findViewById(R.id.mgrTourSelPlayers);
         mgrSetHouseCut = (EditText)findViewById(R.id.mgrSetHouseCut);
         mgrEntreeFee = (EditText)findViewById(R.id.mgrEntreeFee);
         mgrPlayerListTitle = (TextView)findViewById(R.id.mgrPlayerListTitle);
         myPlayers = getPlayersFromdB();
+        PlayerSelected = new Boolean[myPlayers.size()];
 
-        String[] playerNames = new String[myPlayers.length];
-        for(int i = 0; i<myPlayers.length; i++){
-            playerNames[i] = myPlayers[i].getName();
+        //initialize players to not selected
+        for(int i = 0; i<PlayerSelected.length; i++){
+            PlayerSelected[i] = false;
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.user_sel_row, R.id.userName, playerNames);
 
+
+        PlayerSelListAdapter adapter = new PlayerSelListAdapter(this, myPlayers);
         mgrTourSelPlayers.setAdapter(adapter);
 
     }
@@ -70,12 +79,9 @@ public class mgrSetupTournament extends AppCompatActivity {
 
         //gather usernames of selected players
         int[] playeridc = getSelectedPlayerIdc();
-        String[] playerUserNames = new String[playeridc.length];
-        for(int i = 0; i<playeridc.length; i++){
-            playerUserNames[i] = myPlayers[playeridc[i]].getUsername();
-        }
 
-        tourneyParams.putStringArray("playerUserNames",playerUserNames); // adds usernames to Bundle
+
+        //tourneyParams.putStringArray("playerUserNames",playerUserNames); // adds usernames to Bundle
         tourneyParams.putInt("HouseCut",Integer.parseInt(mgrSetHouseCut.getText().toString()));
         tourneyParams.putInt("EntranceFee",Integer.parseInt(mgrEntreeFee.getText().toString()));
         startActivity(new Intent(mgrSetupTournament.this,mgrReviewTournSetup.class).putExtras(tourneyParams));
@@ -124,19 +130,15 @@ public class mgrSetupTournament extends AppCompatActivity {
 
         int playerCount = 0;
 
-        int[] SelectedPlayerIdc = new int[mgrTourSelPlayers.getCount()];
+        int[] SelectedPlayerIdc = new int[PlayerSelected.length];
 
         //BUG: This will not work if the number of players is significantly greater than those can be rendered
         //Only rows with objects on the screen are counted
         //fix: have onclick event each time a button is toggled and track a bool list of checkbox states
         // mgrTourSelPlayers.getCount()
-        for (int i = 0; i <mgrTourSelPlayers.getCount(); i++) {
+        for (int i = 0; i <PlayerSelected.length; i++) {
 
-            player_row = mgrTourSelPlayers.getChildAt(i);
-            //finds checkbox for this user, if its checked increment player count
-            player_check = (CheckBox)player_row.findViewById(R.id.selUser);
-
-            if (player_check.isChecked()) {
+            if (PlayerSelected[i]) {
                 SelectedPlayerIdc[playerCount] = i;
                 playerCount++;
             }
@@ -149,12 +151,12 @@ public class mgrSetupTournament extends AppCompatActivity {
 
     }
     @NonNull
-    private Player[] getPlayersFromdB(){
-        List<Player> allPlayers = new ArrayList<Player>();
+    private ArrayList<Player> getPlayersFromdB(){
+        ArrayList<Player> allPlayers = new ArrayList<Player>();
 
 
         //use this as temporary to fill player list
-        for(int i = 0; i<10; i++){
+        for(int i = 0; i<20; i++){
             allPlayers.add(new Player(i,
                             "player name " + Integer.toString(i),
                             "username" + Integer.toString(i),
@@ -167,8 +169,30 @@ public class mgrSetupTournament extends AppCompatActivity {
         //use this when PlayerDao is ready
         //allPlayers = PlayerDao.getPlayers();
         //i use more primitive, fixed length Arrays, conver this to array here.
-        return allPlayers.toArray(new Player[allPlayers.size()]);
+        return allPlayers;
     }
 
 
+    @Override
+    public void onClick(View v) {
+        //Replace "Checkbox" with your class
+        CheckBox myv = (CheckBox)v;
+
+        int position = -1; //this is cusotm to my implementatnoi
+
+        if(myv.isChecked()){ //here I check if the checkbox is checked (true = checked, false = unchecked)
+            if(myv.getTag() != null){ //here I see if the tag is set, in my Adapter I set this to the position, you should too
+                position = (Integer)myv.getTag(); //again I set the tag to the postion of the object in the list
+            }
+            //I just popup a message with the index for debugging
+            Toast.makeText(getApplicationContext(), "you XX checked: " + Integer.toString(position),
+                    Toast.LENGTH_SHORT).show();
+        }
+        //a more useful function is to keep track of which players are checked to pass to a future activity
+        if(position>=0) {
+            PlayerSelected[position] = myv.isChecked();
+        }
+    }
+
 }
+
