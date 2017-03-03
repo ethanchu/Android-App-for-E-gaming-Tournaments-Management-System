@@ -54,18 +54,18 @@ public class mgrReviewTournSetup extends AppCompatActivity {
         mgrEntreeFee.setText(Integer.toString(entryFee));
 
         //set player list based of playerIDs.  This is O(N^2) implementation
-        String[] tournamentPlayerNames = new String[playerUserNames.length];
+        ArrayList<Player> tournamentPlayers = new ArrayList<Player>();
         for(int i = 0; i<playerUserNames.length; i++){
             for(int j = 0; j<myPlayers.length; j++){
                 if(myPlayers[j].getUsername().equals(playerUserNames[i])){ //player names are equal
-                    tournamentPlayerNames[i] = myPlayers[j].getName();
+                    tournamentPlayers.add(myPlayers[j]);
                 }
             }
         }
-        ArrayList<Player> myPlayerList = new ArrayList<Player>(Arrays.asList(myPlayers));
+        ArrayList<Player> myPlayerList = new ArrayList<Player>(tournamentPlayers);
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.user_view_row, R.id.userName, tournamentPlayerNames);
 
-        PlayerDetailListAdapter a = new PlayerDetailListAdapter(this,myPlayerList);
+        PlayerNameListAdapter a = new PlayerNameListAdapter(this,myPlayerList);
 
         //mgrTournPlayerList.setAdapter(adapter);
         mgrTournPlayerList.setAdapter(a);
@@ -109,6 +109,7 @@ public class mgrReviewTournSetup extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Tournament Started",
                 Toast.LENGTH_SHORT).show();
+        //Tournament activeT = new Tournament()
 
     }
 
@@ -118,7 +119,7 @@ public class mgrReviewTournSetup extends AppCompatActivity {
 
 
         //use this as temporary to fill player list
-        for(int i = 0; i<10; i++){
+        for(int i = 0; i<20; i++){
             allPlayers.add(new Player(i,
                             "player name " + Integer.toString(i),
                             "username" + Integer.toString(i),
