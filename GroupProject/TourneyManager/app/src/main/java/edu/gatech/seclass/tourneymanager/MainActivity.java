@@ -23,18 +23,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
             super.onStart();}
 
-    public void playermode(View view) {
+
+
+public void playermode(View view){
         //TODO DB Implement
 
         //end TODO
-        // TODO Playermode implement
-        Toast.makeText(MainActivity.this, "Switch to Player Mode!", Toast.LENGTH_LONG).show();
         startActivity(new Intent(MainActivity.this, PlayerMode.class));
+
         }
-    }
-
-    }
-
 
     public void managermode(View view){
         //TODO DB Implement

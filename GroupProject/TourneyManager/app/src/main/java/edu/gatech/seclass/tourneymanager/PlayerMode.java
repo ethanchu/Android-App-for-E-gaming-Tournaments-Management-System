@@ -4,7 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import edu.gatech.seclass.tourneymanager.dao.DatabaseHelper;
 
 /**
  * Created by Summer on 3/4/17.
@@ -12,17 +17,29 @@ import android.widget.Toast;
 
 public class PlayerMode extends AppCompatActivity {
 
-    public void onClick(View view) {
-        if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() != null) {
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, PlaerModeMatchlist.class);
-            MainActivity.this.startActivity(intent);
+    private Button mybutton;
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            mybutton = (Button)findViewById(R.id.plr_sel_button);
+            setContentView(R.layout.activity_player_mode);
+            if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
+
+
+            }else if (DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() != null) {
+
+
+
+            }
         }
-        else if(onTournament == flase){
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, PlayerModeUserlistActivity.class);
-            MainActivity.this.startActivity(intent);
+    public void plrShowNextActivity(View v){
+        if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
+
+            startActivity(new Intent(PlayerMode.this, PlayerModeUserlistActivity.class));
+        }else if (DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() != null) {
+
+
+            //startActivity(new Intent(PlayerMode.this, InactivemanagermodeActivity.class));
         }
     }
-
 }
+

@@ -33,7 +33,7 @@ public class mgrSelectMatchWinner extends AppCompatActivity {
         MatchResultSubmit = (Button)findViewById(R.id.MatchResultSubmit);
 
         MatchResultP1Wins.setText(myMatch.getPlayer1().getName());
-        MatchResultP1Wins.setText(myMatch.getPlayer2().getName());
+        MatchResultP2Wins.setText(myMatch.getPlayer2().getName());
 
     }
     public void setMatchWinner(View v){
