@@ -46,4 +46,13 @@ public class InactivemanagermodeActivity extends AppCompatActivity {
         startActivity(new Intent(InactivemanagermodeActivity.this, UserlistActivity.class));
 
     }
+
+    public void createtournament(View view){
+        //TODO DB Implement
+
+        //end TODO
+        Toast.makeText(InactivemanagermodeActivity.this, "Create Tournament!", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(InactivemanagermodeActivity.this, mgrSetupTournament.class));
+
+    }
 }

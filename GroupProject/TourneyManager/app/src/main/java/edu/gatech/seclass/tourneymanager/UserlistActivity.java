@@ -36,8 +36,8 @@ public class UserlistActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlist);
 // testing
-        myPlayerList.add(new Player(001,"Player1", "Player1", "6467092083",10.0, Deck.ENGINEER));
-        myPlayerList.add(new Player(002,"Player2", "Player2", "6467092083",10.0, Deck.ENGINEER));
+        myPlayerList.add(new Player(001,"Player1", "Player1", "123456789",10.0, Deck.ENGINEER));
+        myPlayerList.add(new Player(002,"Player2", "Player2", "987654321",10.0, Deck.ENGINEER));
         //endtesting
         userList = (ListView)findViewById(R.id.userlistview);
         UserListAdapter a = new UserListAdapter(this,myPlayerList);

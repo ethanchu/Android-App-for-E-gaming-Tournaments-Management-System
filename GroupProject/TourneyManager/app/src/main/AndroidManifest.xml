@@ -16,33 +16,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity"
+            android:name=".InactivemanagermodeActivity"
             android:label="@string/app_name"
-            android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
-        </activity>
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="edu.gatech.seclass.tourneymanager.AddPlayerActivity"
+            android:name=".AddPlayerActivity"
             android:label="AddPlayer"
-            android:parentActivityName="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity" >
-        </activity>
+            android:parentActivityName=".InactivemanagermodeActivity" />
         <activity
-            android:name="edu.gatech.seclass.tourneymanager.HouseProfitsActivity"
+            android:name=".HouseProfitsActivity"
             android:label="HouseProfits"
-            android:parentActivityName="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity" >
-        </activity>
+            android:parentActivityName=".InactivemanagermodeActivity" />
         <activity
-            android:name="edu.gatech.seclass.tourneymanager.UserlistActivity"
+            android:name=".UserlistActivity"
             android:label="Userlist"
-            android:parentActivityName="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity" >
-        </activity>
+            android:parentActivityName=".InactivemanagermodeActivity" />
         <activity
-            android:name="edu.gatech.seclass.tourneymanager.mgrReviewTournSetup"
+            android:name=".mgrReviewTournSetup"
             android:label="mgrReviewTournSetup"
-            android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
-        </activity>
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="edu.gatech.seclass.tourneymanager.mgrSetupTournament"
+            android:name=".mgrSetupTournament"
             android:label="mgrSetupTournament"
+<<<<<<< HEAD
             android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
         </activity>
         <activity
@@ -50,6 +46,11 @@
             android:label="mgrSetupTournament"
             android:parentActivityName="edu.gatech.seclass.tourneymanager.UserlistActivity" >
         </activity>
+=======
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".mgrControlMatches" />
+        <activity android:name=".mgrSelectMatchWinner"></activity>
+>>>>>>> 68a3def14f7d1cc2226cf289fb758c0273587f1f
     </application>
 
 </manifest>

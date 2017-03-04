@@ -78,6 +78,28 @@ public class MatchDao extends SQLiteOpenHelper {
         return ret;
     }
 
+    public Match getMatch(Integer matchId) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String selection = MatchContract.MatchEntry.ID + " = ?";
+        String [] selectionArgs = {matchId.toString()};
+
+        Cursor cursor = db.query(
+                MatchContract.MatchEntry.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
+
+        if(cursor.moveToFirst()) {
+            return mapCursorToMatch(cursor);
+        }
+
+        return null;
+    }
+
     /**
      * Create a new match
      * @param tournamentId  ID of the tournament
