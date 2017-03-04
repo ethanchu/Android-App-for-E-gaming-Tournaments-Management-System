@@ -27,9 +27,8 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="391dp"
-            android:id="@+id/mgrControlMatchList"
-            android:layout_weight="0.36" />
+            android:layout_height="403dp"
+            android:id="@+id/mgrControlMatchList" />
 
         <LinearLayout
             android:orientation="horizontal"
