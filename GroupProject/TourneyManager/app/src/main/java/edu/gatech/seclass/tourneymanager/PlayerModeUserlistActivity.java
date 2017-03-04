@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -36,10 +37,6 @@ public class PlayerModeUserlistActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlist);
-// testing
-        myPlayerList.add(new Player(001,"Player1", "Player1", "123456789",10.0, Deck.ENGINEER));
-        myPlayerList.add(new Player(002,"Player2", "Player2", "987654321",10.0, Deck.ENGINEER));
-        //endtesting
 
         //database interface
         myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();

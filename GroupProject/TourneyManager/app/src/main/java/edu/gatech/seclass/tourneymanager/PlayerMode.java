@@ -38,7 +38,7 @@ public class PlayerMode extends AppCompatActivity {
         }else if (DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() != null) {
 
 
-            //startActivity(new Intent(PlayerMode.this, InactivemanagermodeActivity.class));
+            startActivity(new Intent(PlayerMode.this, PlayerModeUserlistActivity.class));
         }
     }
 }
