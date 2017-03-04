@@ -14,11 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import edu.gatech.seclass.tourneymanager.dao.DatabaseHelper;
 import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
 import edu.gatech.seclass.tourneymanager.models.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class mgrSetupTournament extends AppCompatActivity{
@@ -29,7 +31,7 @@ public class mgrSetupTournament extends AppCompatActivity{
     private EditText mgrSetHouseCut; //user sets house cut
     private EditText mgrEntreeFee; //user sets entrance fee
     private TextView mgrPlayerListTitle; //used as something to anchor errors in the player list
-    private ArrayList<Player> myPlayers;
+    private List<Player> myPlayers;
 
 
     @Override
@@ -67,17 +69,29 @@ public class mgrSetupTournament extends AppCompatActivity{
 
         //gather usernames of selected players
         int[] playeridc = getSelectedPlayerIdc();
-        String[] playerUserNames = new String[playeridc.length];
+        ArrayList<Integer> playerUserID = new ArrayList<Integer>();
         for(int i = 0; i<playeridc.length; i++){
-            playerUserNames[i] = myPlayers.get(playeridc[i]).getUsername();
+            playerUserID.add(myPlayers.get(playeridc[i]).getPlayerId());
         }
 
-        tourneyParams.putStringArray("playerUserNames",playerUserNames); // adds usernames to Bundle
+        tourneyParams.putIntegerArrayList("playerUserID",playerUserID);
         tourneyParams.putInt("HouseCut",Integer.parseInt(mgrSetHouseCut.getText().toString()));
         tourneyParams.putInt("EntranceFee",Integer.parseInt(mgrEntreeFee.getText().toString()));
-        startActivity(new Intent(mgrSetupTournament.this,mgrReviewTournSetup.class).putExtras(tourneyParams));
+        startActivityForResult(new Intent(mgrSetupTournament.this,mgrReviewTournSetup.class).putExtras(tourneyParams),0);
 
     }
+    //this is used to determine if the reviewActivity started the Tournament or not
+    //if it did start the Tournament this will return as well.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(resultCode == Activity.RESULT_OK){
+            finish(); //finish this activity as well since a Tournament was created and we cannot create a second tournament while one is active.
+        }
+
+    }
+
+
     //this method verifies all data entries and will throw an errors for violating fields
     //returns true if all fields are valid
     //returns false otherwise
@@ -128,30 +142,26 @@ public class mgrSetupTournament extends AppCompatActivity{
         //fix: have onclick event each time a button is toggled and track a bool list of checkbox states
         // mgrTourSelPlayers.getCount()
 
-        String x = "";
+
         for (int i = 0; i <PlayerSelected.length; i++) {
 
             if (PlayerSelected[i]) {
                 SelectedPlayerIdc[playerCount] = i;
                 playerCount++;
-                x = x + Integer.toString(i) + ",";
             }
-
-
         }
 
-        /*Toast.makeText(getApplicationContext(), x,
-                Toast.LENGTH_SHORT).show();*/
-        //returns an array trimmed to the length of the selected players.
 
         return Arrays.copyOfRange(SelectedPlayerIdc,0,playerCount);
 
     }
     @NonNull
-    private ArrayList<Player> getPlayersFromdB(){
-        ArrayList<Player> allPlayers = new ArrayList<Player>();
+    private List<Player> getPlayersFromdB(){
+        List<Player> allPlayers = new ArrayList<Player>();
 
+        allPlayers = DatabaseHelper.getInstance().getPlayerDao().getPlayers();
 
+        /*
         //use this as temporary to fill player list
         for(int i = 0; i<20; i++){
             allPlayers.add(new Player(i,
@@ -166,6 +176,7 @@ public class mgrSetupTournament extends AppCompatActivity{
         //use this when PlayerDao is ready
         //allPlayers = PlayerDao.getPlayers();
         //i use more primitive, fixed length Arrays, conver this to array here.
+        */
         return allPlayers;
     }
 }
