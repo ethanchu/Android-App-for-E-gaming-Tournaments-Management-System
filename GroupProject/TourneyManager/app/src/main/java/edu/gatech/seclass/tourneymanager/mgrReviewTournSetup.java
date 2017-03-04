@@ -1,5 +1,7 @@
 package edu.gatech.seclass.tourneymanager;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,11 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.gatech.seclass.tourneymanager.dao.PlayerDao;
+import edu.gatech.seclass.tourneymanager.dao.constants.MatchStatus;
 import edu.gatech.seclass.tourneymanager.dao.constants.TournamentStatus;
 import edu.gatech.seclass.tourneymanager.models.Tournament;
 import edu.gatech.seclass.tourneymanager.models.Player;
 import edu.gatech.seclass.tourneymanager.models.Match;
-import edu.gatech.seclass.tourneymanager.dao.constants.Deck;;
+import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
+import edu.gatech.seclass.tourneymanager.dao.DatabaseHelper;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -30,8 +34,8 @@ public class mgrReviewTournSetup extends AppCompatActivity {
     private ListView mgrTournPlayerList;
     private int houseCut;
     private int entryFee;
-    private String[] playerUserNames;
-    private Player[] myPlayers;
+    private ArrayList<Integer> playerUserID;
+    private List<Player> myPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +52,17 @@ public class mgrReviewTournSetup extends AppCompatActivity {
 
         houseCut = getIntent().getExtras().getInt("HouseCut");
         entryFee = getIntent().getExtras().getInt("EntranceFee");
-        playerUserNames = getIntent().getExtras().getStringArray("playerUserNames");
+        playerUserID = getIntent().getExtras().getIntegerArrayList("playerUserID");
 
         //set known fields
         mgrEntreeFee.setText(Integer.toString(entryFee));
 
         //set player list based of playerIDs.  This is O(N^2) implementation
         ArrayList<Player> tournamentPlayers = new ArrayList<Player>();
-        for(int i = 0; i<playerUserNames.length; i++){
-            for(int j = 0; j<myPlayers.length; j++){
-                if(myPlayers[j].getUsername().equals(playerUserNames[i])){ //player names are equal
-                    tournamentPlayers.add(myPlayers[j]);
+        for(int i = 0; i<playerUserID.size(); i++){
+            for(int j = 0; j<myPlayers.size(); j++){
+                if(myPlayers.get(j).getPlayerId().equals(playerUserID.get(i))){ //player names are equal
+                    tournamentPlayers.add(myPlayers.get(j));
                 }
             }
         }
@@ -79,11 +83,11 @@ public class mgrReviewTournSetup extends AppCompatActivity {
         mgrThirdPrize.setText("");
         mgrHouseProfit.setText("");
 
-        int entrantsNumberValue = playerUserNames.length;
+        int entrantsNumberValue = playerUserID.size();
         int entranceFeeValue = entryFee;
         int housePercentageValue = houseCut;
 
-        //calclualte purse
+        //calculate purse
         double purse = (double)(entrantsNumberValue * entranceFeeValue);
         //set house cut
         mgrHouseProfit.setText(Integer.toString((int)(purse / 100.0 * housePercentageValue + 0.5)));
@@ -98,16 +102,28 @@ public class mgrReviewTournSetup extends AppCompatActivity {
     }
 
     public void startTournament(View v) {
-        /*
-        Tournament t = new Tournament(0,
-                0,
-                TournamentStatus.NOTSTARTED,
-                entryFee * 1.0,
-                houseCut,
-                new ArrayList<Player>(),
-                new ArrayList<Match>(),
-                new ArrayList<Match>());
-*/
+        ArrayList<Integer> playerIDs = getIntent().getExtras().getIntegerArrayList("playerUserID");
+        //create the tournament
+        int tournamentID = DatabaseHelper.getInstance().getTournamentDao().createTournament(
+                getIntent().getExtras().getInt("EntranceFee") * 1.0,
+                Integer.parseInt(mgrHouseProfit.getText().toString()),
+                playerIDs
+        );
+
+        //create dummy matches
+        List<Integer> Matches = new ArrayList<Integer>();
+        //i can trust the divide by 2 as only 8 or 16 players are allowed
+
+        //creates first round of matches.
+        for(int i = 0; i<playerIDs.size()/2;i++){
+            int matchID = DatabaseHelper.getInstance().getMatchDao().createMatch(tournamentID,playerIDs.get(i),playerIDs.get(playerIDs.size()-i-1));
+        }
+
+        setResult(Activity.RESULT_OK,new Intent()); //return with result OK meaning we started a tournament
+        //if a result is not provided (becauase the user hits back)
+        finish(); //done with this activity
+
+
 
         Toast.makeText(getApplicationContext(), "Tournament Started",
                 Toast.LENGTH_SHORT).show();
@@ -116,11 +132,16 @@ public class mgrReviewTournSetup extends AppCompatActivity {
     }
 
     @NonNull
-    private Player[] getPlayersFromdB(){
+    private List<Player> getPlayersFromdB(){
         List<Player> allPlayers = new ArrayList<Player>();
+        //this is for the actual database
+        allPlayers = DatabaseHelper.getInstance().getPlayerDao().getPlayers();
 
-
+        ///====================
+        /// This is dummy to fill players without interfacing with dB
+        ///====================
         //use this as temporary to fill player list
+        /*
         for(int i = 0; i<20; i++){
             allPlayers.add(new Player(i,
                             "player name " + Integer.toString(i),
@@ -131,10 +152,8 @@ public class mgrReviewTournSetup extends AppCompatActivity {
                     )
             );
         }
-        //use this when PlayerDao is ready
-        //allPlayers = PlayerDao.getPlayers();
-        //i use more primitive, fixed length Arrays, conver this to array here.
-        return allPlayers.toArray(new Player[allPlayers.size()]);
+        */
+        return allPlayers;
     }
 
 }
