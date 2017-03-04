@@ -14,11 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import edu.gatech.seclass.tourneymanager.dao.DatabaseHelper;
 import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
 import edu.gatech.seclass.tourneymanager.models.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class mgrSetupTournament extends AppCompatActivity{
@@ -29,7 +31,7 @@ public class mgrSetupTournament extends AppCompatActivity{
     private EditText mgrSetHouseCut; //user sets house cut
     private EditText mgrEntreeFee; //user sets entrance fee
     private TextView mgrPlayerListTitle; //used as something to anchor errors in the player list
-    private ArrayList<Player> myPlayers;
+    private List<Player> myPlayers;
 
 
     @Override
@@ -154,10 +156,12 @@ public class mgrSetupTournament extends AppCompatActivity{
 
     }
     @NonNull
-    private ArrayList<Player> getPlayersFromdB(){
-        ArrayList<Player> allPlayers = new ArrayList<Player>();
+    private List<Player> getPlayersFromdB(){
+        List<Player> allPlayers = new ArrayList<Player>();
 
+        allPlayers = DatabaseHelper.getInstance().getPlayerDao().getPlayers();
 
+        /*
         //use this as temporary to fill player list
         for(int i = 0; i<20; i++){
             allPlayers.add(new Player(i,
@@ -172,6 +176,7 @@ public class mgrSetupTournament extends AppCompatActivity{
         //use this when PlayerDao is ready
         //allPlayers = PlayerDao.getPlayers();
         //i use more primitive, fixed length Arrays, conver this to array here.
+        */
         return allPlayers;
     }
 }

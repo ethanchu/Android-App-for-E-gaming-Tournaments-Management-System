@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.seclass.tourneymanager.models.Player;
 
@@ -21,14 +22,14 @@ import edu.gatech.seclass.tourneymanager.models.Player;
 //TODO: 1 Rename this class for your use case
 public class PlayerSelListAdapter extends ArrayAdapter<Player> implements View.OnClickListener{
     //TODO: 2 Change the class within the < > to the class you will be displaying
-    private ArrayList<Player> data;
+    private List<Player> data;
     //====================
     private Boolean[] PlayerSelected;
     private Context context; //leave this
 
     //TODO: 3 Rename this constructor to the same as your class
     PlayerSelListAdapter(Activity context,
-                          ArrayList<Player> data) //TODO 4 Change the class within the <> to match what you used above
+                          List<Player> data) //TODO 4 Change the class within the <> to match what you used above
     {
         super(context, -1, data); //leave this
         this.data = data;

@@ -27,7 +27,7 @@ public class mgrSelectMatchWinner extends AppCompatActivity {
         setContentView(R.layout.activity_mgr_select_match_winner);
 
         matchID = getIntent().getExtras().getInt("matchID"); //get match ID from previous activity
-        myMatch = DatabaseHelper.getInstance().getMatchDao().getMatch();
+        myMatch = DatabaseHelper.getInstance().getMatchDao().getMatch(matchID);
         MatchResultP1Wins = (RadioButton)findViewById(R.id.MatchResultP1Wins);
         MatchResultP2Wins = (RadioButton)findViewById(R.id.MatchResultP2Wins);
         MatchResultSubmit = (Button)findViewById(R.id.MatchResultSubmit);
