@@ -65,6 +65,7 @@ public class mgrControlMatches extends AppCompatActivity {
                 //start match
                 DatabaseHelper.getInstance().getMatchDao().updateMatchStatus(myMatch.getMatchId(),MatchStatus.STARTED,null);
                 myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
+                adapter.refresh(myMatches);
                 //tells data to refresh
             }else{
                 Toast.makeText(getApplicationContext(), "Match is not not in Notstarted state",
@@ -72,7 +73,6 @@ public class mgrControlMatches extends AppCompatActivity {
             }
             //expensive, re-loads all matches from dB, but ensures its up to date
 
-            adapter.notifyDataSetChanged();
         }
     }
 
@@ -99,12 +99,14 @@ public class mgrControlMatches extends AppCompatActivity {
     //if it did start the Tournament this will return as well.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
+        //notify adapter that status has changed
+        adapter.refresh(myMatches);
         if(resultCode == Activity.RESULT_OK){
             //update matches from database, something has changed
             myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
             //notify adapter that status has changed
-            adapter.notifyDataSetChanged();
+            adapter.refresh(myMatches);
             finish(); //finish this activity as well since a Tournament was created and we cannot create a second tournament while one is active.
         }
 

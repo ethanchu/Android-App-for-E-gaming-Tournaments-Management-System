@@ -47,6 +47,7 @@
             android:text="Submit Results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/MatchResultSubmit" />
+            android:id="@+id/MatchResultSubmit"
+            android:onClick="setMatchWinner" />
     </LinearLayout>
 </RelativeLayout>
