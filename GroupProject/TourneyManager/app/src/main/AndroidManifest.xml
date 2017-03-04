@@ -45,6 +45,11 @@
             android:label="mgrSetupTournament"
             android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
         </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.IndividualplayerActivity"
+            android:label="mgrSetupTournament"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.UserlistActivity" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,12 +1,10 @@
 package edu.gatech.seclass.tourneymanager;
-import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -70,9 +68,6 @@ public class UserListAdapter extends ArrayAdapter<Player> {
         username.setText(p.getUsername()); //this sets the TextView to the username of this instance
         userwin.setText(p.getWinnings().toString());   //this sets the TextView to the player totalwinnings of this instance
 
-        //TODO: 10 add onClick callback object and set tag (optional, use if tracking clicks is needed)
-        username.setTag(new Integer(position));
-        username.setOnClickListener((View.OnClickListener)this.context);
 
         return rowView;
     }
