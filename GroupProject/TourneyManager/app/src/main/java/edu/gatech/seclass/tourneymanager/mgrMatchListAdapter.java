@@ -88,11 +88,12 @@ public class mgrMatchListAdapter  extends ArrayAdapter<Match> implements Adapter
                 rowView.setBackgroundColor(Color.CYAN);
             }
 
-
-
             return rowView;
         }
-
+    public void refresh(ArrayList<Match> updatedMatches){
+        this.data = updatedMatches;
+        notifyDataSetChanged();
+    }
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
