@@ -38,15 +38,15 @@ public class AddPlayerActivity extends AppCompatActivity {
          Name = (EditText) findViewById(R.id.name);
          Username = (EditText) findViewById(R.id.username);
          Phone = (EditText) findViewById(R.id.phonenumber);
-         deck = (Spinner) findViewById(R.id.deck);
+         Deck = (Spinner) findViewById(R.id.deck);
     }
 
 
     public void createplayer(View view){
         //TODO DB Implement
-        int playerID = DatabaseHelper.getInstance().getPlayerDao().createPlayer(Name.getText().toString(),Username.getText().toString(),Phone.getText().toString(), edu.gatech.seclass.tourneymanager.dao.constants.Deck.ENGINEER );
+        //int playerID = DatabaseHelper.getInstance().getPlayerDao().createPlayer(Name.getText().toString(),Username.getText().toString(),Phone.getText().toString(), edu.gatech.seclass.tourneymanager.dao.constants.Deck.ENGINEER );
         //end TODO
-        Toast.makeText(AddPlayerActivity.this, "Player has been added"+  Integer.toString(playerID), Toast.LENGTH_LONG).show();
+        Toast.makeText(AddPlayerActivity.this, "Player has been added", Toast.LENGTH_LONG).show();
         finish();
 
     }
