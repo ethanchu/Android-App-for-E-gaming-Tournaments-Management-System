@@ -31,19 +31,30 @@ import edu.gatech.seclass.tourneymanager.models.Player;
 public class mgrControlMatches extends AppCompatActivity {
     private ListView mgrMatchList; //list within main to display the users
     private ArrayList<Match> myMatches;
-    private PlayerMatchListAdapter adapter;
+    private mgrMatchListAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mgr_control_matches);
 
 
-        mgrMatchList = (ListView)findViewById(R.id.mgrTourSelPlayers);
+        mgrMatchList = (ListView)findViewById(R.id.mgrControlMatchList);
 
         myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
 
-        adapter = new PlayerMatchListAdapter(this, myMatches);
+        Toast.makeText(getApplicationContext(), "Num Matches = " + Integer.toString(myMatches.size()),
+                Toast.LENGTH_SHORT).show();
+
+        adapter = new mgrMatchListAdapter(this, myMatches);
+        if(mgrMatchList == null) {
+            Toast.makeText(getApplicationContext(), "mgrMatchList is null",
+                    Toast.LENGTH_SHORT).show();
+        }
         mgrMatchList.setAdapter(adapter);
+
+        //set on click listener
+        mgrMatchList.setOnItemClickListener((AdapterView.OnItemClickListener)adapter);
     }
 
     public void StartMatchClick(View v){
@@ -81,7 +92,6 @@ public class mgrControlMatches extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Match is not in Notstarted state",
                         Toast.LENGTH_SHORT).show();
             }
-
         }
     }
 
@@ -101,91 +111,6 @@ public class mgrControlMatches extends AppCompatActivity {
     }
 
 
-// * Created by atg23 on 3/1/2017.
 
-    //TODO: 1 Rename this class for your use case
-    public class PlayerMatchListAdapter extends ArrayAdapter<Match> implements AdapterView.OnItemClickListener {
-        //TODO: 2 Change the class within the < > to the class you will be displaying
-        private ArrayList<Match> data;
-        private int selectedrow = -1;
-        //====================
-
-        private Context context; //leave this
-        //TODO: 3 Rename this constructor to the same as your class
-        PlayerMatchListAdapter(Activity context,
-                                ArrayList<Match> data) //TODO 4 Change the class within the <> to match what you used above
-        {
-            super(context,-1,data); //leave this
-            this.data = data;
-            this.context = context;
-
-
-        }
-        @Override
-        public int getCount()
-        {
-            return data.size();
-        } //Leave this
-
-        @Override
-        //TODO: 5 Change the return type of this method to the class you are displaying
-        public Match getItem(int position)
-        {
-            return data.get(position);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) { //leave this constructor
-
-
-            //get the player this item is referring to
-            //TODO: 6 Change the type of "p" below to the class you are using
-            Match match = getItem(position);
-
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE); //leave this the same
-
-            //TODO: 7 Replace "R.layout.user_view_detail_row" with "R.layout.{your custom row layout file}
-            View rowView = inflater.inflate(R.layout.mgr_matches_row,
-                    parent, false);
-
-
-            //edit this list to match your needs
-            //TODO: 8 modify the declarations below to get handles for each of the elements in your ROW layout
-            TextView mgrMatchListPlayer1 = (TextView)rowView.findViewById(R.id.mgrMatchListPlayer1);
-            TextView mgrMatchListPlayer2 = (TextView) rowView.findViewById(R.id.mgrMatchListPlayer2);
-            TextView mgrMatchListState = (TextView) rowView.findViewById(R.id.mgrMatchListState);
-
-
-
-            //TODO: 9 modify the logic here to set the values for each element in your row you want to change
-            mgrMatchListPlayer1.setText(match.getPlayer1().getName()); //this sets the TextViewto the player name of this instance
-            mgrMatchListPlayer2.setText(match.getPlayer2().getName());   //this sets the TextView to the player phone number of this instance
-            mgrMatchListState.setText(match.getMatchStatus().getDisplay());  //this sets the TextView to the player username of this instance
-
-            //this code does some manipulation to the data to determine what to display to show you dont have to do a straight passthrough.
-            if(match.getMatchStatus() == MatchStatus.COMPLETED){
-                if(match.getWinner().equals(match.getPlayer1())){
-                    mgrMatchListPlayer1.setBackgroundColor(Color.GREEN);
-                }else if(match.getWinner().equals(match.getPlayer2())){
-                    mgrMatchListPlayer2.setBackgroundColor(Color.GREEN);
-                }
-            }
-            if(selectedrow == position){
-                rowView.setBackgroundColor(Color.BLUE);
-            }else{
-                rowView.setBackgroundColor(Color.WHITE);
-            }
-
-            return rowView;
-        }
-
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            view.setBackgroundColor(Color.BLUE);
-        }
-        public int getSelectedrow(){
-            return selectedrow;
-        }
-    }
 
 }

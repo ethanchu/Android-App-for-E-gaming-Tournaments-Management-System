@@ -38,7 +38,12 @@ public class MainActivity extends AppCompatActivity {
         //end TODO
 
         Toast.makeText(MainActivity.this, "Switch to Manager Mode!", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(MainActivity.this, InactivemanagermodeActivity.class));
+        if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
+
+            startActivity(new Intent(MainActivity.this, InactivemanagermodeActivity.class));
+        }else{
+            startActivity(new Intent(MainActivity.this, ActiveManagerMode.class));
+        }
 
     }
 }

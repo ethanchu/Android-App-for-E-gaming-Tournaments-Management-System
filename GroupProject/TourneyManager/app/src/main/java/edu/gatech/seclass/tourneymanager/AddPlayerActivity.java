@@ -38,7 +38,7 @@ public class AddPlayerActivity extends AppCompatActivity {
          Name = (EditText) findViewById(R.id.name);
          Username = (EditText) findViewById(R.id.username);
          Phone = (EditText) findViewById(R.id.phonenumber);
-         deck = (Spinner) findViewById(R.id.deck);
+         Deck = (Spinner) findViewById(R.id.deck);
     }
 
 
