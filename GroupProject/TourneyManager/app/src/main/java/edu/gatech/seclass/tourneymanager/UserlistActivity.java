@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.gatech.seclass.tourneymanager.R;
+import edu.gatech.seclass.tourneymanager.dao.DatabaseHelper;
 import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
 import edu.gatech.seclass.tourneymanager.models.Player;
 
@@ -39,6 +40,9 @@ public class UserlistActivity extends AppCompatActivity{
         myPlayerList.add(new Player(001,"Player1", "Player1", "123456789",10.0, Deck.ENGINEER));
         myPlayerList.add(new Player(002,"Player2", "Player2", "987654321",10.0, Deck.ENGINEER));
         //endtesting
+
+        //database interface
+        myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();
         userList = (ListView)findViewById(R.id.userlistview);
         UserListAdapter a = new UserListAdapter(this,myPlayerList);
         userList.setAdapter(a);

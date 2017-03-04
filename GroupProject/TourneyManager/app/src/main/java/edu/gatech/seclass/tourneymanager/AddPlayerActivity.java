@@ -44,7 +44,7 @@ public class AddPlayerActivity extends AppCompatActivity {
 
     public void createplayer(View view){
         //TODO DB Implement
-        //int playerID = DatabaseHelper.getInstance().getPlayerDao().createPlayer(Name.getText().toString(),Username.getText().toString(),Phone.getText().toString(), edu.gatech.seclass.tourneymanager.dao.constants.Deck.ENGINEER );
+        int playerID = DatabaseHelper.getInstance().getPlayerDao().createPlayer(Name.getText().toString(),Username.getText().toString(),Phone.getText().toString(), edu.gatech.seclass.tourneymanager.dao.constants.Deck.ENGINEER );
         //end TODO
         Toast.makeText(AddPlayerActivity.this, "Player has been added", Toast.LENGTH_LONG).show();
         finish();
