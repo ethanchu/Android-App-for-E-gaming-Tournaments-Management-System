@@ -89,7 +89,7 @@ public class mgrControlMatches extends AppCompatActivity {
                 startActivityForResult(new Intent(mgrControlMatches.this,mgrSelectMatchWinner.class).putExtras(matchParams),0);
 
             }else{
-                Toast.makeText(getApplicationContext(), "Match is not in Notstarted state",
+                Toast.makeText(getApplicationContext(), "Match is not in Started state",
                         Toast.LENGTH_SHORT).show();
             }
         }
