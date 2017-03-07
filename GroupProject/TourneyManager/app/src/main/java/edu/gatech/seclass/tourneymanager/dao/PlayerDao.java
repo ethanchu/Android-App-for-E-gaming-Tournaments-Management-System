@@ -121,6 +121,15 @@ public class PlayerDao extends SQLiteOpenHelper {
         return ret;
     }
 
+    public void deletePlayer(Integer playerId) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String selection = PlayerContract.PlayerEntry.ID + "= ?";
+        String[] selectionArgs = {selection.toString()};
+
+        db.delete(PlayerContract.PlayerEntry.TABLE_NAME, selection, selectionArgs);
+    }
+
     //////////////////
     // Util
     //////////////////
@@ -130,9 +139,9 @@ public class PlayerDao extends SQLiteOpenHelper {
         String name = cursor.getString(cursor
                 .getColumnIndexOrThrow(PlayerContract.PlayerEntry.NAME));
         String userName = cursor.getString(cursor
-                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.NAME));
+                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.USERNAME));
         String phoneNumber = cursor.getString(cursor
-                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.NAME));
+                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.PHONENUMBER));
         Integer deck = cursor.getInt(cursor
                 .getColumnIndexOrThrow(PlayerContract.PlayerEntry.DECK));
 

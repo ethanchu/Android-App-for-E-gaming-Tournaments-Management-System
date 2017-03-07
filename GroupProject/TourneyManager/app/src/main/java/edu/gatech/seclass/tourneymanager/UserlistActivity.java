@@ -27,19 +27,13 @@ import edu.gatech.seclass.tourneymanager.models.Player;
 
 public class UserlistActivity extends AppCompatActivity{
 
-// testing
+
     private ArrayList<Player> myPlayerList = new ArrayList();
     private ListView userList;
-    //end testing
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlist);
-// testing
-        myPlayerList.add(new Player(001,"Player1", "Player1", "123456789",10.0, Deck.ENGINEER));
-        myPlayerList.add(new Player(002,"Player2", "Player2", "987654321",10.0, Deck.ENGINEER));
-        //endtesting
 
         //database interface
         myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();
@@ -61,10 +55,7 @@ public class UserlistActivity extends AppCompatActivity{
                         Intent i = new Intent(UserlistActivity.this, IndividualplayerActivity.class);
                         Player selplayer = myPlayerList.get(pos);
                         Bundle b = new Bundle();
-                        b.putString("Name", selplayer.getName());
-                        b.putString("UserName", selplayer.getUsername());
-                        b.putString("Phone", selplayer.getPhoneNumber());
-                        b.putString("Deck",selplayer.getDeck().toString());
+                        b.putInt("curplayerid", selplayer.getPlayerId());
                         i.putExtra("playerbd1",b);
                         startActivity(i);
 
