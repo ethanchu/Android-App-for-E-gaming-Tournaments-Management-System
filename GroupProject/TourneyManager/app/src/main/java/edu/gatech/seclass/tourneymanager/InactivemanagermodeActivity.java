@@ -24,7 +24,7 @@ public class InactivemanagermodeActivity extends AppCompatActivity {
         //TODO DB Implement
 
         //end TODO
-        Toast.makeText(InactivemanagermodeActivity.this, "Add Player!", Toast.LENGTH_LONG).show();
+        Toast.makeText(InactivemanagermodeActivity.this, "Add Player!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(InactivemanagermodeActivity.this, AddPlayerActivity.class));
 
     }
@@ -33,7 +33,7 @@ public class InactivemanagermodeActivity extends AppCompatActivity {
         //TODO DB Implement
 
         //end TODO
-        Toast.makeText(InactivemanagermodeActivity.this, "View House Profits!", Toast.LENGTH_LONG).show();
+        Toast.makeText(InactivemanagermodeActivity.this, "View House Profits!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(InactivemanagermodeActivity.this, HouseProfitsActivity.class));
 
     }
@@ -42,7 +42,7 @@ public class InactivemanagermodeActivity extends AppCompatActivity {
         //TODO DB Implement
 
         //end TODO
-        Toast.makeText(InactivemanagermodeActivity.this, "View Playerlist!", Toast.LENGTH_LONG).show();
+        Toast.makeText(InactivemanagermodeActivity.this, "View Playerlist!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(InactivemanagermodeActivity.this, UserlistActivity.class));
 
     }
@@ -51,7 +51,7 @@ public class InactivemanagermodeActivity extends AppCompatActivity {
         //TODO DB Implement
 
         //end TODO
-        Toast.makeText(InactivemanagermodeActivity.this, "Create Tournament!", Toast.LENGTH_LONG).show();
+        Toast.makeText(InactivemanagermodeActivity.this, "Create Tournament!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(InactivemanagermodeActivity.this, mgrSetupTournament.class));
 
     }

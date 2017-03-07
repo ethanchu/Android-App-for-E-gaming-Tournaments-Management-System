@@ -142,7 +142,7 @@ public class PlayerResultDao extends SQLiteOpenHelper {
         Double prize = cursor.getDouble(cursor
                 .getColumnIndexOrThrow(PlayerResultContract.PlayerResultEntry.PRIZE));
         String date = cursor.getString(cursor
-                .getColumnIndexOrThrow(PlayerResultContract.PlayerResultEntry.PLAYER_ID));
+                .getColumnIndexOrThrow(PlayerResultContract.PlayerResultEntry.TOURNAMENT_DATE));
 
         DateFormat iso8601Format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date d = new Date();

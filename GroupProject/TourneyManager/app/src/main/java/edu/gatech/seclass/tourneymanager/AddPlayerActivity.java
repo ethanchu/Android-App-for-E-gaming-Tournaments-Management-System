@@ -29,7 +29,8 @@ public class AddPlayerActivity extends AppCompatActivity {
     private EditText Name;
     private EditText Username;
     private EditText Phone;
-    private Spinner Deck;
+    private Spinner Deck_spinner;
+    private Deck deck_db;
 
      protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,16 +39,34 @@ public class AddPlayerActivity extends AppCompatActivity {
          Name = (EditText) findViewById(R.id.name);
          Username = (EditText) findViewById(R.id.username);
          Phone = (EditText) findViewById(R.id.phonenumber);
-         Deck = (Spinner) findViewById(R.id.deck);
+         Deck_spinner = (Spinner) findViewById(R.id.deck);
     }
 
 
     public void createplayer(View view){
         //TODO DB Implement
-        int playerID = DatabaseHelper.getInstance().getPlayerDao().createPlayer(Name.getText().toString(),Username.getText().toString(),Phone.getText().toString(), edu.gatech.seclass.tourneymanager.dao.constants.Deck.ENGINEER );
-        //end TODO
-        Toast.makeText(AddPlayerActivity.this, "Player has been added", Toast.LENGTH_LONG).show();
-        finish();
+        String deckvalue = Deck_spinner.getSelectedItem().toString();
+        switch (deckvalue) {
+            case "ENGINEER": deck_db = Deck.ENGINEER; break;
+            case "BUZZ": deck_db = Deck.BUZZ; break;
+            case "SIDEWAYS": deck_db = Deck.SIDEWAYS; break;
+            case "WRECK": deck_db = Deck.WRECK; break;
+            case "T": deck_db = Deck.T; break;
+            case "RAT": deck_db = Deck.RAT; break;
+        }
+
+        if (Phone.getText().toString().matches("^[0-9]{10}$")) { // Check the phonenumber format
+            Integer playerID = DatabaseHelper.getInstance().getPlayerDao().createPlayer(Name.getText().toString(), Username.getText().toString(), Phone.getText().toString(), deck_db);
+            if (playerID == -1) {
+                Toast.makeText(AddPlayerActivity.this, "Player has exist, was not created!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(AddPlayerActivity.this, "Player was created successfully!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+        else {
+            Toast.makeText(AddPlayerActivity.this, "Phone number format is not correct(should be 10 digits)!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

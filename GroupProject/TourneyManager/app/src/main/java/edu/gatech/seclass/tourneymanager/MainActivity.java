@@ -38,7 +38,7 @@ public void playermode(View view){
 
         //end TODO
 
-        Toast.makeText(MainActivity.this, "Switch to Manager Mode!", Toast.LENGTH_LONG).show();
+        Toast.makeText(MainActivity.this, "Switch to Manager Mode!", Toast.LENGTH_SHORT).show();
         if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
 
             startActivity(new Intent(MainActivity.this, InactivemanagermodeActivity.class));
