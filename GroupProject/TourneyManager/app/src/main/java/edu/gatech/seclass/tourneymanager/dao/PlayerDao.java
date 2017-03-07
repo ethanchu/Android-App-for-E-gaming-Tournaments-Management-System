@@ -130,9 +130,9 @@ public class PlayerDao extends SQLiteOpenHelper {
         String name = cursor.getString(cursor
                 .getColumnIndexOrThrow(PlayerContract.PlayerEntry.NAME));
         String userName = cursor.getString(cursor
-                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.NAME));
+                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.USERNAME));
         String phoneNumber = cursor.getString(cursor
-                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.NAME));
+                .getColumnIndexOrThrow(PlayerContract.PlayerEntry.PHONENUMBER));
         Integer deck = cursor.getInt(cursor
                 .getColumnIndexOrThrow(PlayerContract.PlayerEntry.DECK));
 
