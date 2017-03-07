@@ -121,6 +121,15 @@ public class PlayerDao extends SQLiteOpenHelper {
         return ret;
     }
 
+    public void deletePlayer(Integer playerId) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String selection = PlayerContract.PlayerEntry.ID + "= ?";
+        String[] selectionArgs = {selection.toString()};
+
+        db.delete(PlayerContract.PlayerEntry.TABLE_NAME, selection, selectionArgs);
+    }
+
     //////////////////
     // Util
     //////////////////
