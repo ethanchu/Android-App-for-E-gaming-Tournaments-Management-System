@@ -109,14 +109,15 @@ public class mgrReviewTournSetup extends AppCompatActivity {
                 Integer.parseInt(mgrHouseProfit.getText().toString()),
                 playerIDs
         );
-
         //create dummy matches
         List<Integer> Matches = new ArrayList<Integer>();
         //i can trust the divide by 2 as only 8 or 16 players are allowed
 
+        ArrayList<Integer> my_ints = new ArrayList<Integer>();
         //creates first round of matches.
         for(int i = 0; i<playerIDs.size()/2;i++){
             int matchID = DatabaseHelper.getInstance().getMatchDao().createMatch(tournamentID,playerIDs.get(i),playerIDs.get(playerIDs.size()-i-1));
+            my_ints.add(matchID);
         }
 
         setResult(Activity.RESULT_OK,new Intent()); //return with result OK meaning we started a tournament

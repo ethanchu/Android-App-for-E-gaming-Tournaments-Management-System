@@ -50,4 +50,14 @@ public class Match {
     public Player getWinner() {
         return winner;
     }
+
+    public Player getLoser(){
+        if(this.player1.equals(this.winner)){
+            return player2;
+        }
+        else if(this.player2.equals(this.winner)){
+            return player1;
+        }
+        return null;
+    }
 }

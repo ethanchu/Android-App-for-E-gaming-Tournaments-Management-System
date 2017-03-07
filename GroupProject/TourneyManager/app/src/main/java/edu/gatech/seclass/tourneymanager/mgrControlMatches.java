@@ -38,19 +38,13 @@ public class mgrControlMatches extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mgr_control_matches);
 
-
         mgrMatchList = (ListView)findViewById(R.id.mgrControlMatchList);
 
         myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
 
-        Toast.makeText(getApplicationContext(), "Num Matches = " + Integer.toString(myMatches.size()),
-                Toast.LENGTH_SHORT).show();
 
         adapter = new mgrMatchListAdapter(this, myMatches);
-        if(mgrMatchList == null) {
-            Toast.makeText(getApplicationContext(), "mgrMatchList is null",
-                    Toast.LENGTH_SHORT).show();
-        }
+
         mgrMatchList.setAdapter(adapter);
 
         //set on click listener

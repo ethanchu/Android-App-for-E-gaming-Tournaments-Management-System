@@ -50,4 +50,11 @@ public class Player {
     public Deck getDeck() {
         return deck;
     }
+
+    public boolean equals(Player p){
+        if(this.playerId == null){
+            return false;
+        }
+        return this.playerId.equals(p.getPlayerId());
+    }
 }
