@@ -33,14 +33,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/MatchResultP1Wins"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:text="RadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/MatchResultP2Wins"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textSize="18sp" />
         </RadioGroup>
 
         <Button

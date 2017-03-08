@@ -86,6 +86,8 @@ public class mgrSetupTournament extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if(resultCode == Activity.RESULT_OK){
+            //tell parent we created a tournament
+            setResult(Activity.RESULT_OK, getIntent());
             finish(); //finish this activity as well since a Tournament was created and we cannot create a second tournament while one is active.
         }
 

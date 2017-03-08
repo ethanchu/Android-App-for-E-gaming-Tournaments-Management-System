@@ -30,6 +30,8 @@ public class UserlistActivity extends AppCompatActivity{
 
     private ArrayList<Player> myPlayerList = new ArrayList();
     private ListView userList;
+    private UserListAdapter a; //<<AGIFFT3, declared this here so the onActivityResult has access to it
+    private TextView userListInstructions;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,9 @@ public class UserlistActivity extends AppCompatActivity{
         //database interface
         myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();
         userList = (ListView)findViewById(R.id.userlistview);
-        UserListAdapter a = new UserListAdapter(this,myPlayerList);
+        userListInstructions = (TextView)findViewById(R.id.userListInstructions);
+        userListInstructions.setText("Click on a player to view details");
+        a = new UserListAdapter(this,myPlayerList); //<<AGIFFT3, removed delcration here, just assignment, declared under class
         userList.setAdapter(a);
         setupListViewListener();
     }
@@ -51,17 +55,28 @@ public class UserlistActivity extends AppCompatActivity{
                     public void onItemClick(AdapterView<?> adapter,
                                                    View item, int pos, long id) {
 
-                        Toast.makeText(UserlistActivity.this, "Switch to Individual Player!", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(UserlistActivity.this, "Switch to Individual Player!", Toast.LENGTH_SHORT).show(); <<AGIFFT3, removing misc. Toasts
                         Intent i = new Intent(UserlistActivity.this, IndividualplayerActivity.class);
                         Player selplayer = myPlayerList.get(pos);
                         Bundle b = new Bundle();
                         b.putInt("curplayerid", selplayer.getPlayerId());
                         i.putExtra("playerbd1",b);
-                        startActivity(i);
+                        //startActivity(i); //<<AGIFFT3, commented out and calling for result, this will trigger "onActivityResult" when the child activity returns
+                        startActivityForResult(i,0);
 
                     }
 
                 });
+    }
+    //<<AGIFFT3, added this method that is called when the child activity (IndividualplayerActivity) returns
+    //this will update the LisView
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //update matches from database, something may have changed
+        myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();
+        //notify adapter that status has changed
+        a.refresh(myPlayerList);
+
     }
 
 

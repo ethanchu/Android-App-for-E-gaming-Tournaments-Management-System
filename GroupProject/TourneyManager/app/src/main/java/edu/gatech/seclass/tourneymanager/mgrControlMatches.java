@@ -93,16 +93,10 @@ public class mgrControlMatches extends AppCompatActivity {
     //if it did start the Tournament this will return as well.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //update matches from database, something may have changed
         myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
         //notify adapter that status has changed
         adapter.refresh(myMatches);
-        if(resultCode == Activity.RESULT_OK){
-            //update matches from database, something has changed
-            myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
-            //notify adapter that status has changed
-            adapter.refresh(myMatches);
-            finish(); //finish this activity as well since a Tournament was created and we cannot create a second tournament while one is active.
-        }
 
     }
 

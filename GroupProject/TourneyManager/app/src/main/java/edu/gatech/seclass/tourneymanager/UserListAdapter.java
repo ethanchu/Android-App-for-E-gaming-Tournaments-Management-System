@@ -65,11 +65,18 @@ public class UserListAdapter extends ArrayAdapter<Player> {
 
 
         //TODO: 9 modify the logic here to set the values for each element in your row you want to change
-        username.setText(p.getUsername()); //this sets the TextView to the username of this instance
+        username.setText(p.getName()); //this sets the TextView to the username of this instance
+
         userwin.setText(p.getWinnings().toString());   //this sets the TextView to the player totalwinnings of this instance
 
 
         return rowView;
+    }
+    //<<AGIFFT3, added a refresh method here that updates the dataset used in the list and tells the
+    //list to refresh the current rows.  This is used if a player is deleted in a child activity
+    public void refresh(ArrayList<Player> data){
+        this.data = data;
+        notifyDataSetChanged();
     }
 
 }

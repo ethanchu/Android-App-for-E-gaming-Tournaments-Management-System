@@ -28,7 +28,8 @@ public final class PlayerResultContract {
                     "FOREIGN KEY (" + TOURNAMENT_ID + ") REFERENCES " +
                         TournamentContract.TournamentEntry.TABLE_NAME + " (" + TournamentContract.TournamentEntry.ID +
                     "),\n" +
-                    "CONSTRAINT tournament_unique UNIQUE (" + TOURNAMENT_ID + ", " + TOURNAMENT_ID + ")" +
+                    //"CONSTRAINT tournament_unique UNIQUE (" + TOURNAMENT_ID + ", " + TOURNAMENT_ID + ")" + //<<AGIFFT3, edited second TOURNAMENT_ID to be PLAYER_ID.
+                    "CONSTRAINT tournament_unique UNIQUE (" + TOURNAMENT_ID + ", " + PLAYER_ID + ")" +
                 ");";
     }
 }

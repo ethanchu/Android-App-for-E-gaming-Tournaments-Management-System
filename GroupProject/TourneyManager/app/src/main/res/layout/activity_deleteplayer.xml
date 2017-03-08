@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <EditText
@@ -9,7 +10,10 @@
         android:layout_marginRight="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:layout_alignStart="@+id/username" />
+        android:layout_alignStart="@+id/username"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
 
     <EditText
         android:id="@+id/phonenumber"
@@ -19,7 +23,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_below="@+id/username"
-        android:layout_toEndOf="@+id/textView3" />
+        android:layout_toEndOf="@+id/textView3"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
 
     <EditText
         android:id="@+id/username"
@@ -29,7 +36,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_below="@+id/name"
-        android:layout_alignStart="@+id/phonenumber" />
+        android:layout_alignStart="@+id/phonenumber"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="false" />
 
     <TextView
         android:text="Name"
@@ -69,7 +79,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_below="@+id/phonenumber"
-        android:layout_alignStart="@+id/phonenumber" />
+        android:layout_alignStart="@+id/phonenumber"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:clickable="false" />
 
     <TextView
         android:text="Deck:"

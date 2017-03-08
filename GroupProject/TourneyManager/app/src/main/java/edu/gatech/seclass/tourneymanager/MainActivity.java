@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
             startActivity(new Intent(MainActivity.this, PlayerModeUserlistActivity.class));
         }else{
-
             startActivity(new Intent(MainActivity.this, playerViewMatches.class));
         }
 

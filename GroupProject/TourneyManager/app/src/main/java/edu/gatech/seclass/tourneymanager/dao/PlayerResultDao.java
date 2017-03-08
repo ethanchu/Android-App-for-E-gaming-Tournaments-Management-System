@@ -117,7 +117,7 @@ public class PlayerResultDao extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(
                 "SELECT SUM(" + PlayerResultContract.PlayerResultEntry.PRIZE + ")\n" +
                 "FROM " + PlayerResultContract.PlayerResultEntry.TABLE_NAME + "\n" +
-                "WHERE " + PlayerResultContract.PlayerResultEntry.PLAYER_ID + " = ?",
+                "WHERE " + PlayerResultContract.PlayerResultEntry.PLAYER_ID + " = ?", //<<AGIFFT3, added semicolon
                 selectionArgs);
 
         Double ret = 0.0;

@@ -76,7 +76,8 @@ public class IndividualplayerActivity extends AppCompatActivity {
         DatabaseHelper.getInstance().getPlayerDao().deletePlayer(curplayerid);
         //end TODO
         Toast.makeText(IndividualplayerActivity.this, "The current player was deleted!", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(IndividualplayerActivity.this, UserlistActivity.class));
+        finish(); //<<AGIFFT3, you want to "finish" this activity onot start a new activity otherwise hitting back will go back and forth
+        //startActivity(new Intent(IndividualplayerActivity.this, UserlistActivity.class));
 
     }
 }

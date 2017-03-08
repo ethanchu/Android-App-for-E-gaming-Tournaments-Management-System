@@ -31,12 +31,16 @@ public class PlayerModeUserlistActivity extends AppCompatActivity{
     // testing
     private ArrayList<Player> myPlayerList = new ArrayList();
     private ListView userList;
+    private TextView userListInstructions;
     //end testing
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlist);
+
+        userListInstructions = (TextView)findViewById(R.id.userListInstructions);
+        userListInstructions.setText("");
 
         //database interface
         myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();

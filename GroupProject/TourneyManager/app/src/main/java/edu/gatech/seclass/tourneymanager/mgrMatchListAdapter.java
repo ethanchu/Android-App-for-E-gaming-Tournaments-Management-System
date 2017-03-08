@@ -39,10 +39,8 @@ public class mgrMatchListAdapter  extends ArrayAdapter<Match> implements Adapter
             super(context,-1,data); //leave this
             this.data = data;
             this.context = context;
-
+            this.allowSelection = allowSelection;
             selectedrow = 0;
-
-
         }
         @Override
         public int getCount()
@@ -78,8 +76,6 @@ public class mgrMatchListAdapter  extends ArrayAdapter<Match> implements Adapter
             TextView mgrMatchListPlayer2 = (TextView) rowView.findViewById(R.id.mgrMatchListPlayer2);
             TextView mgrMatchListState = (TextView) rowView.findViewById(R.id.mgrMatchListState);
 
-
-
             //TODO: 9 modify the logic here to set the values for each element in your row you want to change
             String p1wins = "";
             String p2wins = "";
@@ -92,7 +88,7 @@ public class mgrMatchListAdapter  extends ArrayAdapter<Match> implements Adapter
             }
             mgrMatchListPlayer1.setText(p1wins + p.getPlayer1().getName()); //this sets the TextViewto the player name of this instance
             mgrMatchListPlayer2.setText(p2wins + p.getPlayer2().getName());   //this sets the TextView to the player phone number of this instance
-            mgrMatchListState.setText(p.getMatchStatus().getDisplay() + " " + Integer.toString(p.getMatchId()));  //this sets the TextView to the player username of this instance
+            mgrMatchListState.setText(p.getMatchStatus().getDisplay());  //this sets the TextView to the player username of this instance
             if(allowSelection) {
                 if (position != selectedrow) {
                     rowView.setBackgroundColor(Color.WHITE);
@@ -111,7 +107,6 @@ public class mgrMatchListAdapter  extends ArrayAdapter<Match> implements Adapter
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectedrow = position;
-
             notifyDataSetChanged();
         }
 

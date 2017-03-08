@@ -122,8 +122,6 @@ public class mgrSelectMatchWinner extends AppCompatActivity {
         if(matches.size()==numPlayers-2){
             //if both semifinal matches are completed
             if(matches.get(numPlayers-4).getMatchStatus() == MatchStatus.COMPLETED && matches.get(numPlayers-3).getMatchStatus() == MatchStatus.COMPLETED){
-                Toast.makeText(getApplicationContext(), "matchid:" + Integer.toString(matches.get(numPlayers-4).getMatchId()) + " and " + Integer.toString(matches.get(numPlayers-3).getMatchId()),
-                        Toast.LENGTH_SHORT).show();
                 //create third place runoff match
                 DatabaseHelper.getInstance().getMatchDao().createMatch(
                         DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getTournamentId(),
