@@ -109,17 +109,25 @@ public class mgrReviewTournSetup extends AppCompatActivity {
                 Integer.parseInt(mgrHouseProfit.getText().toString()),
                 playerIDs
         );
+        if(tournamentID == 0){
+            Toast.makeText(getApplicationContext(), "ERROR Tournament ID is '0'",
+                    Toast.LENGTH_SHORT).show();
+        }
         //create dummy matches
         List<Integer> Matches = new ArrayList<Integer>();
         //i can trust the divide by 2 as only 8 or 16 players are allowed
 
         ArrayList<Integer> my_ints = new ArrayList<Integer>();
+        String x = "";
         //creates first round of matches.
         for(int i = 0; i<playerIDs.size()/2;i++){
             int matchID = DatabaseHelper.getInstance().getMatchDao().createMatch(tournamentID,playerIDs.get(i),playerIDs.get(playerIDs.size()-i-1));
             my_ints.add(matchID);
+            x = x + "Tid:" + Integer.toString(tournamentID) + ", Mid:" + Integer.toString(matchID) +
+                    ", P1id:" + Integer.toString(playerIDs.get(i)) + ", P2id:" + Integer.toString(playerIDs.get(playerIDs.size()-i-1)) + "\n";
         }
-
+        Toast.makeText(getApplicationContext(), x,
+                Toast.LENGTH_SHORT).show();
         setResult(Activity.RESULT_OK,new Intent()); //return with result OK meaning we started a tournament
         //if a result is not provided (becauase the user hits back)
         finish(); //done with this activity

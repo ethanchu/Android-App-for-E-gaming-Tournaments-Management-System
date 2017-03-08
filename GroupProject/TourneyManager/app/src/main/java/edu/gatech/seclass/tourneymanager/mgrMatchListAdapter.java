@@ -30,9 +30,11 @@ public class mgrMatchListAdapter  extends ArrayAdapter<Match> implements Adapter
         private ArrayList<Match> data;
         //====================
         private Context context; //leave this
+        private boolean allowSelection = false;
         //TODO: 3 Rename this constructor to the same as your class
         mgrMatchListAdapter(Activity context,
-                               ArrayList<Match> data) //TODO 4 Change the class within the <> to match what you used above
+                               ArrayList<Match> data,
+                            boolean allowSelection) //TODO 4 Change the class within the <> to match what you used above
         {
             super(context,-1,data); //leave this
             this.data = data;
@@ -91,10 +93,12 @@ public class mgrMatchListAdapter  extends ArrayAdapter<Match> implements Adapter
             mgrMatchListPlayer1.setText(p1wins + p.getPlayer1().getName()); //this sets the TextViewto the player name of this instance
             mgrMatchListPlayer2.setText(p2wins + p.getPlayer2().getName());   //this sets the TextView to the player phone number of this instance
             mgrMatchListState.setText(p.getMatchStatus().getDisplay() + " " + Integer.toString(p.getMatchId()));  //this sets the TextView to the player username of this instance
-            if(position != selectedrow) {
-                rowView.setBackgroundColor(Color.WHITE);
-            }else{
-                rowView.setBackgroundColor(Color.CYAN);
+            if(allowSelection) {
+                if (position != selectedrow) {
+                    rowView.setBackgroundColor(Color.WHITE);
+                } else {
+                    rowView.setBackgroundColor(Color.CYAN);
+                }
             }
 
             return rowView;

@@ -25,13 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-public void playermode(View view){
+    public void playermode(View view){
         //TODO DB Implement
+        if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
+            startActivity(new Intent(MainActivity.this, PlayerModeUserlistActivity.class));
+        }else{
 
-        //end TODO
-        startActivity(new Intent(MainActivity.this, PlayerMode.class));
-
+            startActivity(new Intent(MainActivity.this, playerViewMatches.class));
         }
+
+
+    }
 
     public void managermode(View view){
         //TODO DB Implement

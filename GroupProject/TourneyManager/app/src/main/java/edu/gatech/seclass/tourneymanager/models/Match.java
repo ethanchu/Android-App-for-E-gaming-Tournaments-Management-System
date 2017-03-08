@@ -51,7 +51,7 @@ public class Match {
         return winner;
     }
 
-    public Player getLoser(){
+    public Player getLoser(){ //AGIFFT3, I added this to ease my 3rd place runoff match.
         if(this.player1.equals(this.winner)){
             return player2;
         }
