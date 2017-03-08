@@ -4,8 +4,10 @@ package edu.gatech.seclass.tourneymanager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,6 +35,7 @@ public class IndividualplayerActivity extends AppCompatActivity {
 
     private ArrayList<PlayerResult> myPlayerresultList = new ArrayList();
     private ListView PlayerresultList;
+    private Integer curplayerid;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,7 @@ public class IndividualplayerActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         Bundle b = i.getBundleExtra("playerbd1");
-        Integer curplayerid = b.getInt("curplayerid");
+        curplayerid = b.getInt("curplayerid");
         Player curplayer = DatabaseHelper.getInstance().getPlayerDao().getPlayer(curplayerid);
         String name = curplayer.getName();
         String username = curplayer.getUsername();
@@ -58,24 +61,22 @@ public class IndividualplayerActivity extends AppCompatActivity {
         Deck.setText(deck);
 
         //test purpose
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(1,curplayerid,1.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(2,curplayerid,2.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(3,curplayerid,3.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(4,curplayerid,4.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(5,curplayerid,5.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(6,curplayerid,6.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(7,curplayerid,7.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(8,curplayerid,8.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(9,curplayerid,9.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(10,curplayerid,10.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(20,curplayerid,20.0);
-        DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(10,curplayerid,1.0);
+        //DatabaseHelper.getInstance().getPlayerResultDao().createPlayerResult(1,curplayerid,1.0);
         //endtest
 
         myPlayerresultList = (ArrayList)DatabaseHelper.getInstance().getPlayerResultDao().getPlayerResults(curplayerid);
         PlayerresultList = (ListView)findViewById(R.id.datelistview);
         IndividualplayerAdapter a = new IndividualplayerAdapter(this,myPlayerresultList);
         PlayerresultList.setAdapter(a);
+
+    }
+
+    public void deleteplayer(View view){
+        //TODO DB Implement
+        DatabaseHelper.getInstance().getPlayerDao().deletePlayer(curplayerid);
+        //end TODO
+        Toast.makeText(IndividualplayerActivity.this, "The current player was deleted!", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(IndividualplayerActivity.this, UserlistActivity.class));
 
     }
 }
