@@ -36,8 +36,9 @@ public final class MatchContract {
                     ")," +
                     "FOREIGN KEY (" + WINNER + ") REFERENCES " +
                         PlayerContract.PlayerEntry.TABLE_NAME + "(" + PlayerContract.PlayerEntry.ID +
-                    "),\n" +
-                    "CONSTRAINT player_unique UNIQUE (" + PLAYER1 + ", " + PLAYER2 + ")" +
+                    //"),\n" + <<AGIFFT3, need to remove trailing comma on this line, see below
+                    ")\n" +
+                    //"CONSTRAINT player_unique UNIQUE (" + PLAYER1 + ", " + PLAYER2 + ")" + <<AGIFFT3, commented out as matches are not deleted from dB after tournament ends, this constaint is hit on future tournaments
                 ");";
     }
 }

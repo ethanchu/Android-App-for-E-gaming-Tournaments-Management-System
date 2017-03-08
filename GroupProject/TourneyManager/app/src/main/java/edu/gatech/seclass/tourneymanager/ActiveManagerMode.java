@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -14,11 +15,19 @@ import edu.gatech.seclass.tourneymanager.dao.constants.MatchStatus;
 import edu.gatech.seclass.tourneymanager.models.Match;
 
 public class ActiveManagerMode extends AppCompatActivity {
-
+    private TextView tournStatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_manger_mode);
+
+        tournStatus = (TextView)findViewById(R.id.mgrActiveTournStatus);
+        tournStatus.setText("ID:" +
+                Integer.toString(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getTournamentId()) +
+                ", #matches:" +
+                Integer.toString(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches().size()) +
+                ""
+        );
     }
 
 

@@ -23,7 +23,7 @@ public class PlayerMode extends AppCompatActivity {
             mybutton = (Button)findViewById(R.id.plr_sel_button);
             setContentView(R.layout.activity_player_mode);
             if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
-
+                mybutton.setText("hello");
 
             }else if (DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() != null) {
 
@@ -38,8 +38,10 @@ public class PlayerMode extends AppCompatActivity {
         }else if (DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() != null) {
 
 
-            startActivity(new Intent(PlayerMode.this, PlayerModeUserlistActivity.class));
+            startActivity(new Intent(PlayerMode.this, playerViewMatches.class));
         }
     }
+
+
 }
 

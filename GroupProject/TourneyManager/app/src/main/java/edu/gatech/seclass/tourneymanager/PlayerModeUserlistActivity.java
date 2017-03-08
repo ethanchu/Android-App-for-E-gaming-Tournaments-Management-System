@@ -43,32 +43,8 @@ public class PlayerModeUserlistActivity extends AppCompatActivity{
         userList = (ListView)findViewById(R.id.userlistview);
         UserListAdapter a = new UserListAdapter(this,myPlayerList);
         userList.setAdapter(a);
-        //setupListViewListener();
+
     }
-/***DIsable on click listener, not needed for player mode
-    // Attaches a long click listener to the listview
-    private void setupListViewListener() {
-        userList.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapter,
-                                            View item, int pos, long id) {
 
-                        Toast.makeText(UserlistActivity.this, "Switch to Individual Player!", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(UserlistActivity.this, IndividualplayerActivity.class);
-                        Player selplayer = myPlayerList.get(pos);
-                        Bundle b = new Bundle();
-                        b.putString("Name", selplayer.getName());
-                        b.putString("UserName", selplayer.getUsername());
-                        b.putString("Phone", selplayer.getPhoneNumber());
-                        b.putString("Deck",selplayer.getDeck().toString());
-                        i.putExtra("playerbd1",b);
-                        startActivity(i);
-
-                    }
-
-                });
-    }
-*/
 
 }

@@ -19,11 +19,11 @@
             android:layout_alignParentStart="true">
 
             <Button
-                android:text="View Player List"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/plr_sel_button"
-                android:onClick="plrShowNextActivity" />
+                android:onClick="plrShowNextActivity (PlayerMode)"
+                tools:text="View Player List" />
 
         </LinearLayout>
 

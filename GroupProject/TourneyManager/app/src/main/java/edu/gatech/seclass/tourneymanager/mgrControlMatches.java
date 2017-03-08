@@ -43,7 +43,7 @@ public class mgrControlMatches extends AppCompatActivity {
         myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
 
 
-        adapter = new mgrMatchListAdapter(this, myMatches);
+        adapter = new mgrMatchListAdapter(this, myMatches,true);
 
         mgrMatchList.setAdapter(adapter);
 
@@ -105,8 +105,6 @@ public class mgrControlMatches extends AppCompatActivity {
         }
 
     }
-
-
 
 
 }

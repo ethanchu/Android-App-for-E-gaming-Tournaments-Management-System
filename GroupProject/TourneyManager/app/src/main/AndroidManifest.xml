@@ -26,19 +26,17 @@
         <activity
             android:name=".PlayerModeUserlistActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".PlayerMode" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddPlayerActivity"
-            android:label="AddPlayer"
-            android:parentActivityName=".InactivemanagermodeActivity" />
+            android:label="AddPlayer" />
         <activity
             android:name=".HouseProfitsActivity"
-            android:label="HouseProfits"
-            android:parentActivityName=".InactivemanagermodeActivity" />
+            android:label="HouseProfits" />
         <activity
             android:name=".UserlistActivity"
-            android:label="Userlist"
-            android:parentActivityName=".InactivemanagermodeActivity" />
+            android:label="Userlist" />
+
         <activity
             android:name=".mgrReviewTournSetup"
             android:label="mgrReviewTournSetup"
@@ -46,14 +44,15 @@
         <activity
             android:name=".mgrSetupTournament"
             android:label="mgrSetupTournament"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".IndividualplayerActivity"
             android:label="mgrSetupTournament"
-            android:parentActivityName=".UserlistActivity"></activity>
+            android:parentActivityName=".UserlistActivity" />
         <activity android:name=".mgrControlMatches" />
         <activity android:name=".mgrSelectMatchWinner" />
         <activity android:name=".ActiveManagerMode" />
+        <activity android:name=".playerViewMatches"></activity>
     </application>
 
 </manifest>

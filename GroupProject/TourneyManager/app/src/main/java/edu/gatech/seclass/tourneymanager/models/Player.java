@@ -51,7 +51,7 @@ public class Player {
         return deck;
     }
 
-    public boolean equals(Player p){
+    public boolean equals(Player p){ //<<AGIFFT3, I added this so I can compare player objects, the Object.equals didnt find objects with same playerID equal
         if(this.playerId == null){
             return false;
         }
