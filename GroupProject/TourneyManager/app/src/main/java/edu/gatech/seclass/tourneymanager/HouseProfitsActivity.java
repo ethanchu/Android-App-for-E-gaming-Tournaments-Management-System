@@ -28,8 +28,8 @@ public class HouseProfitsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_houseprofits);
 
         // testing
-        DatabaseHelper.getInstance().getTournamentResultDao().createTournamentResult(1,1,2,3,1.0);
-        DatabaseHelper.getInstance().getTournamentResultDao().createTournamentResult(2,1,2,3,2.0);
+//        DatabaseHelper.getInstance().getTournamentResultDao().createTournamentResult(1,1,2,3,1.0);
+//        DatabaseHelper.getInstance().getTournamentResultDao().createTournamentResult(2,1,2,3,2.0);
         //endtesting
 
         myTournamentList = (ArrayList) DatabaseHelper.getInstance().getTournamentResultDao().getTournamentResults();
