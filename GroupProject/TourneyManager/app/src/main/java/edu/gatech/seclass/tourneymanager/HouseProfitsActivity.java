@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import edu.gatech.seclass.tourneymanager.R;
 import edu.gatech.seclass.tourneymanager.dao.DatabaseHelper;
@@ -27,12 +29,8 @@ public class HouseProfitsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_houseprofits);
 
-        // testing
-//        DatabaseHelper.getInstance().getTournamentResultDao().createTournamentResult(1,1,2,3,1.0);
-//        DatabaseHelper.getInstance().getTournamentResultDao().createTournamentResult(2,1,2,3,2.0);
-        //endtesting
-
         myTournamentList = (ArrayList) DatabaseHelper.getInstance().getTournamentResultDao().getTournamentResults();
+        Collections.sort(myTournamentList);
         ListView TourList = (ListView)findViewById(R.id.houseid);
         HouseprofitListAdapter a = new HouseprofitListAdapter(this,myTournamentList);
         TourList.setAdapter(a);

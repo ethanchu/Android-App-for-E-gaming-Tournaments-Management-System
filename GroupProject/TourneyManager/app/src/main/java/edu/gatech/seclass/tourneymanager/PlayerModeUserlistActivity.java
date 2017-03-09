@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,7 @@ public class PlayerModeUserlistActivity extends AppCompatActivity{
 
         //database interface
         myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();
+        Collections.sort(myPlayerList);
         userList = (ListView)findViewById(R.id.userlistview);
         UserListAdapter a = new UserListAdapter(this,myPlayerList);
         userList.setAdapter(a);

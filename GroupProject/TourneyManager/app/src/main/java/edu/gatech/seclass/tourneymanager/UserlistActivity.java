@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class UserlistActivity extends AppCompatActivity{
 
         //database interface
         myPlayerList = (ArrayList)DatabaseHelper.getInstance().getPlayerDao().getPlayers();
+        Collections.sort(myPlayerList);
         userList = (ListView)findViewById(R.id.userlistview);
         userListInstructions = (TextView)findViewById(R.id.userListInstructions);
         userListInstructions.setText("Click on a player to view details");

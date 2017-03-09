@@ -5,7 +5,7 @@ import edu.gatech.seclass.tourneymanager.dao.constants.Deck;
 /**
  * Data class containing information about the player.
  */
-public class Player {
+public class Player implements Comparable<Player> {
     private final Integer playerId;
     private final String name;
     private final String username;
@@ -56,5 +56,12 @@ public class Player {
             return false;
         }
         return this.playerId.equals(p.getPlayerId());
+    }
+
+    @Override
+    public int compareTo(Player that) {
+        if (this.getWinnings()  < that.getWinnings())  return +1;
+        if (this.getWinnings()  > that.getWinnings())  return -1;
+        return 0;
     }
 }

@@ -55,7 +55,7 @@ public class AddPlayerActivity extends AppCompatActivity {
             case "RAT": deck_db = Deck.RAT; break;
         }
 
-        if (Phone.getText().toString().matches("^[0-9]{10}$") && Username.getText().toString().matches("[a-zA-Z 0-9]+")) { // Check the phonenumber format
+        if (Phone.getText().toString().matches("^[0-9]{10}$") && Username.getText().toString().matches("[a-zA-Z 0-9]+")) { // Check the phonenumber&username format
             Integer playerID = DatabaseHelper.getInstance().getPlayerDao().createPlayer(Name.getText().toString(), Username.getText().toString(), Phone.getText().toString(), deck_db);
             if (playerID == -1) {
                 Toast.makeText(AddPlayerActivity.this, "Player has exist, was not created!", Toast.LENGTH_SHORT).show();

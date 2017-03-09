@@ -3,7 +3,7 @@ package edu.gatech.seclass.tourneymanager.models;
 /**
  * Data object containing information about a completed match.
  */
-public class TournamentResult {
+public class TournamentResult implements Comparable<TournamentResult> {
     private final Integer tournamentResultId;
     private final Integer tournamentId;
     private final Double profit;
@@ -47,5 +47,12 @@ public class TournamentResult {
 
     public Player getThirdPlace() {
         return thirdPlace;
+    }
+
+    @Override
+    public int compareTo(TournamentResult that) {
+        if (this.getTournamentResultId()  < that.getTournamentResultId())  return -1;
+        if (this.getTournamentResultId()  > that.getTournamentResultId())  return +1;
+        return 0;
     }
 }
