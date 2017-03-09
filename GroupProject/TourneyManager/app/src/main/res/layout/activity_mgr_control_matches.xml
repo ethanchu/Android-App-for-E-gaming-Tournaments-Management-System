@@ -27,14 +27,15 @@
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="403dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
             android:id="@+id/mgrControlMatchList" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_weight="0.33">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <Button
                 android:text="Start Match"

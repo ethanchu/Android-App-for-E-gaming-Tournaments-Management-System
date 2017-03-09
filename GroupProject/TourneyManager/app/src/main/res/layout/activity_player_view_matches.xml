@@ -23,13 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView10"
+            android:layout_weight="0"
             android:textSize="18sp" />
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="403dp"
+            android:layout_height="wrap_content"
             android:id="@+id/plrViewMatchList"
-            android:layout_weight="0.50" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 
