@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import edu.gatech.seclass.tourneymanager.dao.DatabaseHelper;
 
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class mgrControlMatches extends AppCompatActivity {
     private ListView mgrMatchList; //list within main to display the users
     private ArrayList<Match> myMatches;
     private mgrMatchListAdapter adapter;
+    private TextView tournCompleteTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +42,22 @@ public class mgrControlMatches extends AppCompatActivity {
         setContentView(R.layout.activity_mgr_control_matches);
 
         mgrMatchList = (ListView)findViewById(R.id.mgrControlMatchList);
-
+        tournCompleteTxt = (TextView)findViewById(R.id.tournCompleteTxt);
         myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
 
+        boolean tournFinished = true;
+        if(myMatches.size() == DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getPlayers().size()){
+            for(int i = 0;i<myMatches.size(); i++){
+                tournFinished = tournFinished && myMatches.get(i).getMatchStatus() == MatchStatus.COMPLETED;
+            }
+        }else{
+            tournFinished = false;
+        }
+        if(tournFinished){
+            tournCompleteTxt.setText("Tournament complete!\n please finish the tournament");
+        }else{
+            tournCompleteTxt.setText("");
+        }
 
         adapter = new mgrMatchListAdapter(this, myMatches,true);
 
@@ -60,6 +76,7 @@ public class mgrControlMatches extends AppCompatActivity {
                 DatabaseHelper.getInstance().getMatchDao().updateMatchStatus(myMatch.getMatchId(),MatchStatus.STARTED,null);
                 myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
                 adapter.refresh(myMatches);
+
                 //tells data to refresh
             }else{
                 Toast.makeText(getApplicationContext(), "Match is not not in Notstarted state",
@@ -82,6 +99,7 @@ public class mgrControlMatches extends AppCompatActivity {
                 //pass match ID to below.
                 startActivityForResult(new Intent(mgrControlMatches.this,mgrSelectMatchWinner.class).putExtras(matchParams),0);
 
+
             }else{
                 Toast.makeText(getApplicationContext(), "Match is not in Started state",
                         Toast.LENGTH_SHORT).show();
@@ -97,6 +115,20 @@ public class mgrControlMatches extends AppCompatActivity {
         myMatches = (ArrayList)DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getMatches();
         //notify adapter that status has changed
         adapter.refresh(myMatches);
+
+        boolean tournFinished = true;
+        if(myMatches.size() == DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getPlayers().size()){
+            for(int i = 0;i<myMatches.size(); i++){
+                tournFinished = tournFinished && myMatches.get(i).getMatchStatus() == MatchStatus.COMPLETED;
+            }
+        }else{
+            tournFinished = false;
+        }
+        if(tournFinished){
+            tournCompleteTxt.setText("Tournament complete!\n please finish the tournament");
+        }else{
+            tournCompleteTxt.setText("");
+        }
 
     }
 

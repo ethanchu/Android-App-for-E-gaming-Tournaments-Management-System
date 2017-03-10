@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void playermode(View view){
-        //TODO DB Implement
+
         if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
             startActivity(new Intent(MainActivity.this, PlayerModeUserlistActivity.class));
         }else{
@@ -37,11 +37,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void managermode(View view){
-        //TODO DB Implement
 
-        //end TODO
 
-        Toast.makeText(MainActivity.this, "Switch to Manager Mode!", Toast.LENGTH_SHORT).show();
         if(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament() == null) {
 
             startActivity(new Intent(MainActivity.this, InactivemanagermodeActivity.class));
