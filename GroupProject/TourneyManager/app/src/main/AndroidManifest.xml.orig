@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.gatech.seclass.tourneymanager">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
+        </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.AddPlayerActivity"
+            android:label="AddPlayer"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity" >
+        </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.HouseProfitsActivity"
+            android:label="HouseProfits"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity" >
+        </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.UserlistActivity"
+            android:label="Userlist"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.InactivemanagermodeActivity" >
+        </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.mgrReviewTournSetup"
+            android:label="mgrReviewTournSetup"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
+        </activity>
+        <activity
+            android:name="edu.gatech.seclass.tourneymanager.mgrSetupTournament"
+            android:label="mgrSetupTournament"
+            android:parentActivityName="edu.gatech.seclass.tourneymanager.MainActivity" >
+        </activity>
+    </application>
+
+</manifest>

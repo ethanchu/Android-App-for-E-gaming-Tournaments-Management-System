@@ -33,6 +33,8 @@ public class ActiveManagerMode extends AppCompatActivity {
     public void quitTournament(View v){
         //set tournament state to quit regardless of state of matches
         //do not create ...Result objects
+        Toast.makeText(getApplicationContext(), "Tournament cancelled, no prizes awarded",
+                Toast.LENGTH_SHORT).show();
         DatabaseHelper.getInstance().getTournamentDao().endTournamentEarly(DatabaseHelper.getInstance().getTournamentDao().getActiveTournament().getTournamentId());
         finish();
     }
@@ -93,6 +95,10 @@ public class ActiveManagerMode extends AppCompatActivity {
 
             //Fourth, End tournament
             DatabaseHelper.getInstance().getTournamentDao().endTournament(activeTournament.getTournamentId());
+
+            Toast.makeText(getApplicationContext(), "Tournament finished! prizes paid to winners",
+                    Toast.LENGTH_SHORT).show();
+
             finish();
         }else{
             Toast.makeText(getApplicationContext(), "The tournament is not finished, complete all matches or quit",
