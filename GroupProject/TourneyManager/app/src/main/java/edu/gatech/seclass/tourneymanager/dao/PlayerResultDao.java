@@ -100,6 +100,7 @@ public class PlayerResultDao extends SQLiteOpenHelper {
             ret.add(mapCursorToResult(cursor));
         }
 
+        cursor.close();
 
         return ret;
     }
@@ -125,6 +126,8 @@ public class PlayerResultDao extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             ret = cursor.getDouble(0);
         }
+
+        cursor.close();
 
         return ret;
     }

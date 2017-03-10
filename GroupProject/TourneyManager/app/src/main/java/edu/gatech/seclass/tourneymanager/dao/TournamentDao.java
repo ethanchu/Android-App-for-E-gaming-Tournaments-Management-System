@@ -103,17 +103,23 @@ public class TournamentDao extends SQLiteOpenHelper {
 
             String[] selectionArgsPlayers = {tournament.getTournamentId().toString()};
 
+            cursor.close();
+
             cursor = db.rawQuery(TournamentContract.TournamentEntry.GET_PLAYERS, selectionArgsPlayers);
 
-            while(cursor.moveToNext()) {
+            while (cursor.moveToNext()) {
                 tournament.getPlayers().add(PlayerDao.mapCursorToPlayer(cursor));
             }
 
             tournament.getMatches().addAll(
                     DatabaseHelper.getInstance().getMatchDao().getMatches(tournament.getTournamentId()));
 
+            cursor.close();
+
             return tournament;
         }
+
+        cursor.close();
 
         return null;
     }
