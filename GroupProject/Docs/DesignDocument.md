@@ -64,14 +64,6 @@ From here the user can select manager mode or player mode
 If the user selects Player Mode, they will be shown one of two screens depending on if there
 is an active tournament.
 
-![Player Screen Tournament Inactive](./ui/playerscreen_inactivetournament.png)  
-This is the menu that will be displayed to the user if there is no active tournament.
-It will allow the user to view a list of all players.
-
-![Player Screen Tournament Active](./ui/playerscreen_activetournament.png)  
-This is the menu that will be displayed to the user if there is an active tournament.
-It will allow the player to view the match list.
-
 ![Player List](./actual_ui/userlist.png)  
 If there is no ongoing tournament, the user will be able to see a list of players
 and their total prizes.
