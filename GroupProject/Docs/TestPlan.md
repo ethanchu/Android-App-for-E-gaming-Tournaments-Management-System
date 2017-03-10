@@ -53,8 +53,8 @@ problem has been resolved.
 | :----------| :------- | :----------------| :--------------| :-----------| :------|
 | Test app works	| Open App 	| App opened | App opened | P | |
 | Test player UI	| Choose player mode	| Player UI | Player UI  | P  | |
-| View total player prizes | View Player List | Show totals for every player sorted by total prizes | Show totals for every player sorted by total prizes | P | When there is no tournament onging | 
-| View match list | View Match List | A list of match and the status | A list of match and the status | P | When there is tournament onging | 
+| View totals for every player in the system | | A list sorted by totals showed | A list sorted by totals showed | P | When there is no tournament onging | 
+| View match list| | List of player matches and status | List of player matches and status | P | When there is tournament onging |
 
 ###Manager UI
 
@@ -62,21 +62,20 @@ problem has been resolved.
 | :----------| :------- | :----------------| :--------------| :-----------| :------| 
 | Test app works	| Open App 	| App opened | App opened | P | |
 | Test manager UI	| Choose manager mode	| Manager UI | Manager UI   | P  | |
-| Add player to the system	| Enter Name, username, phone number, deck choice | Player added | Player added  | P | |
-| Add duplicate player to the system | Enter Name, username, phone number, deck choice | Player already exists | Player already exists  | P | Player info has already entered |
-| Add username already taken	| Enter Name, username, phone number, deck choice | Player username already taken | Player already taken  | P | Player username is taken |
-| Remove player	| Enter username | Player deleted | Player deleted  | P | Use the username to delete since it is unique |
-| Enter the house cut| Enter the house cut 	| House cut added | House cut added | P | |
-| Enter the entry price| Enter the entry price | Entry price added | Entry price added | P | |
-| Add player to the tournament| Enter username | Player /username/ added to the tournament | Player /username/ added to the tournament| P | |
-| Add duplicate player to the tournament| Enter username | Player /username/ has already added to the tournament | Player /username/ has apready added to the tournament| P | Add player that is adlready added|
-| Remove player from the tournament| Enter username | Player /username/ removed from the tournament| Player /username/ removed from the tournament| P | Remove players added by mistake |
-| Add player that is not existed in the system | Enter username | Player not existed | Player not exited | P | Add player that is not in the system|
-| Start a tournament | Click start the tournament | Please enter either 8 or 16 players | Please enter either 8 or 16 players | P | When the players number is neither 8 or 16 |
-| Start a match | Choose a match from the list and click start | Mark the match as started | Mark the match as started | P | When a tournament is onging |
-| End a match | End the onging match | Specify a result for the ended match | Specify a result for the ended match | P | When a tournament is onging |
-| End a tournament | End the tournament | Tournament is ended | Tournament is ended | P | If ended earily, show the tournament is ended ahead of time |
-| Save tournament result to the system | Click save result | Tournament result is saved | Tournament result is saved | P | Save the house profit and the 1/ 2/ 3 prize |
-| View totals for every player in the system | Click view totals | A list sorted by totals showed | A list sorted by totals showed | P | When there is no tournament onging |  
-| View a list of a player’s individual prizes | Select a player from the list | A list of the player's individual prizes showed | A list of the player's individual prizes showed | P | When there is no tournament onging |  
-| View past house profits and the total |  Click view profit history | A list of past house profits in chronological order and the total showed | A list of past house profits in chronological order and the total showed| P | When there is no tournament onging |   
+| Add player to the system	| Enter Name, username, phone number, deck choice | Player was created successfully | Player was created successfully | P | |
+| Add duplicate player to the system | Enter Name, username, phone number, deck choice | Player has exist | Player has exist | P | Player info has already entered |
+| Add username already taken	| Enter Name, username, phone number, deck choice | Player has exist | has exist | P | Player username is used |
+| Delete player	| Detele player | The current player was deleted | The current player was deleted | P | |
+| Creat tournament | Enter house cut, entry fee, add players	| | | P | |
+| Review tournament details | Review tournament details | List of player names, house cut, entry fee, 1st/2nd/3rd prize | List of player names, house cut, entry fee,1st/2nd/3rd prize | P | |
+| Start tournament| Start tournament | Tournament started | Tournament started | P | |
+| View match list| View match list | List of player matches and status | List of player matches and status | P | |
+| Start match | Choose a match from the list and click start | The status changed to started | The status changed to started| P | When a tournament is onging |
+| End match | End the onging match | Specify a winner for the ended match | Specify a winner for the ended match | P | When a tournament is onging |
+| End match | End a match that is not ongoing | Match is not in started state | Match is not in started state | P | When a tournament is onging |
+| Finish tournament | Finish tournament | Tournament is ended | Tournament is ended | P | Finish tournament when all matches are completed |
+| Finish tournament | Finish tournament | The tournament is not finished, complete all matches or quit | The tournament is not finished, complete all matches or quit | P | Finish tournament that some of the matches is not completed |
+| Quit tournament | Quit tournament | The tournament is quit without saving results | The tournament is quit without saving results | P | |
+| View totals for every player in the system | Click view player list | A list sorted by totals showed | A list sorted by totals showed | P | When there is no tournament onging |  
+| View a list of a player’s individual prizes | Click a player from the list | A list of the player's individual prizes showed | A list of the player's individual prizes showed | P | When there is no tournament onging |  
+| View house profit |  View house profit | A list of past house profits in chronological order | A list of past house profits in chronological order | P | When there is no tournament onging |   
