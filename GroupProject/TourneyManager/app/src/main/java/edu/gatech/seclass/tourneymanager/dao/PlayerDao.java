@@ -89,8 +89,12 @@ public class PlayerDao extends SQLiteOpenHelper {
                 null);
 
         if (cursor.moveToFirst()) {
-            return mapCursorToPlayer(cursor);
+            Player ret = mapCursorToPlayer(cursor);
+            cursor.close();
+            return ret;
         }
+
+        cursor.close();
 
         return null;
     }
@@ -117,6 +121,8 @@ public class PlayerDao extends SQLiteOpenHelper {
         while(cursor.moveToNext()) {
             ret.add(mapCursorToPlayer(cursor));
         }
+
+        cursor.close();
 
         return ret;
     }

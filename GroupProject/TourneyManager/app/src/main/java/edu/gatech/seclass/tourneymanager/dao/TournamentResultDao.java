@@ -98,6 +98,8 @@ public class TournamentResultDao extends SQLiteOpenHelper {
             ret.add(mapCursorToResult(cursor));
         }
 
+        cursor.close();
+
         return ret;
     }
 

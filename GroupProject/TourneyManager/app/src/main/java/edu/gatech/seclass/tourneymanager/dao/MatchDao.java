@@ -75,6 +75,8 @@ public class MatchDao extends SQLiteOpenHelper {
             ret.add(mapCursorToMatch(cursor));
         }
 
+        cursor.close();
+
         return ret;
     }
 
@@ -94,7 +96,9 @@ public class MatchDao extends SQLiteOpenHelper {
                 null);
 
         if(cursor.moveToFirst()) {
-            return mapCursorToMatch(cursor);
+            Match ret = mapCursorToMatch(cursor);
+            cursor.close();
+            return ret;
         }
 
         return null;
@@ -177,8 +181,6 @@ public class MatchDao extends SQLiteOpenHelper {
                 .getColumnIndexOrThrow(MatchContract.MatchEntry.PLAYER2));
         Integer winner = cursor.getInt(cursor
                 .getColumnIndexOrThrow(MatchContract.MatchEntry.WINNER));
-
-        Log.v("in match", winner.toString());
 
         Player p1 = DatabaseHelper.getInstance().getPlayerDao().getPlayer(player1);
         Player p2 = DatabaseHelper.getInstance().getPlayerDao().getPlayer(player2);
