@@ -84,28 +84,50 @@ There is no state change to the system as a result of this action but the post c
  - The Actor clicks a button to view the match list
  - The system indicates a warning stating that a tournament is not active and a match list cannot be displayed assuming a tournament is not active
 
-#### Update Tournament State
+#### Set Match Result
 
 *Requirements:*
-This use case allows the manager to update the state of a match or tournament by implementing one of the three use cases that inherit Update Tournament State
+This use case allows the manager to set the match result (the winner and loser).
 
 *Pre-conditions:*
 There must be an active tournament meaning the Manager has peformed the Create Tournament use case and not performed the End Tournament use case.
 Additionally the actor has to have performed the View Match List use case to get a GUI for the tournament and match state.
+There must be atleast one Match in the "Started" state.
 Finally the actor must be the manager (the player does not have access to this use case).
 
 *Post-conditions, Set Match Result:* 
-If the Actor selects to update the tournament state by setting a match result, the state of the selected match should change to completed and a winner (and optionally loser) should be declared based on the Manger's selection.
+If the Actor selects to update a match result, the state of the selected match should change to completed and a winner should be declared based on the Manger's selection.
 
 *Scenarios, Normal Event Sequence, Set Match Result:* 
 
  - The Actor just completed the Normal Sequence for View Match List
- - The Actor clicks a button next to a match in the started or active state within the list of matches indicating the Actor would like to set the result
+ - The Actor selects a match in the list.
+ - The Actor clicks a button indicating the Actor would like to set the result
  - The Actor selects a winner
  - The system changes the state of the match to complete, updates the attributes of the match based on the winner selected
  - The system returns to the GUI for View Match List
 
- Note: it is assumed that no option to start match will be displayed for a match that cannot be completed therefore this use case cannot be entered for a match in an invalid state
+*Scenarios, Exceptoinal Event Sequence (selected match not in started state):* 
+
+ - The Actor just completed the Normal Sequence for View Match List
+ - The Actor selects a match in the list.
+ - The Actor clicks a button indicating the Actor would like to set the result
+ - The system pops up an error message indicating that the match must be in the started state to set a match result.
+
+
+#### Start Match 
+
+*Requirements:*
+This use case allows the manager to set the match result (the winner and loser).
+
+*Pre-conditions:*
+There must be an active tournament meaning the Manager has peformed the Create Tournament use case and not performed the End Tournament use case.
+Additionally the actor has to have performed the View Match List use case to get a GUI for the tournament and match state.
+There must be atleast one Match in the "Notstarted" state.
+Finally the actor must be the manager (the player does not have access to this use case).
+
+*Post-conditions, Set Match Result:* 
+If the Actor selects to update a match state to started, the state of the selected match should change to Started.
 
 *Scenarios, Normal Event Sequence, Start Match:* 
 
@@ -115,15 +137,47 @@ If the Actor selects to update the tournament state by setting a match result, t
  - The system returns to the GUI for View Match List with the GUI changed to indicate the match has started and any interactions that allows the user to take (such as a button to set match result)
 *Note it is assumed that no option to start match will be displayed for a match that cannot be started therefore this use case cannot be entered for a match in an invalid state
 
-*Scenarios, Normal Event Sequence, End Tournament:* 
+*Scenarios, Exceptoinal Event Sequence (selected match not in notstarted state):* 
 
  - The Actor just completed the Normal Sequence for View Match List
- - The Actor clicks a button not associated with a match indicating the Actor would like to end the tournament
- - The system changes the state of the match to finished
- - If all matches were completed, the system updates the player prizes and house profits and stores the match results
- - If all matches were not completed, the system refunds players (if required) cancels or completes any outstanding matches
- - The system returns to a home GUI outside of the View Match List GUI which is no longer valid as there is no active tournament.
+ - The Actor selects a match in the list.
+ - The Actor clicks a button indicating the Actor would like to set the result
+ - The system pops up an error message indicating that the match must be in the notstarted state to start.
 
+
+#### Stop Tournament
+
+*Requirements:*
+This use case allows the manager to stop the tournament.  This case is inherited by Finish Tournament and Quit Tournament
+
+*Pre-conditions:*
+There must be an active tournament meaning the Manager has peformed the Create Tournament use case and not performed the End Tournament use case.
+The Actor must be the manager (the player does not have access to this use case).
+
+*Post-conditions, Set Match Result:* 
+The active tournament is stopped and the application returns to the "no active match" state.
+
+*Scenarios, Normal Event Sequence, Quit Tournament:* 
+
+ - The Actor enters the application and selects their role as Manager
+ - The Actor clicks a button indicating they want to Quit the tournament
+ - The active tournament is stopped regardless of match state
+ - The GUI is returned to the manager home screen.
+
+*Scenarios, Normal Event Sequence, Finish Tournament:* 
+
+ - The Actor enters the application and selects their role as Manager
+ - The Actor clicks a button indicating they want to Finish the tournament
+ - The active tournament is stopped
+ - The 1st, 2nd, and 3rd place prizes for the winner, runner up, and 3rd place finisher are recorded in the database
+ - The house profit for the tournament is recorded in the database
+ - The GUI is returned to the manager home screen.
+
+*Scenarios, Exceptional Event Sequence, Finish Tournament (matches not complete):*
+
+ - The Actor enters the application and selects their role as Manager
+ - The Actor clicks a button indicating they want to Finish the tournament
+ - The application shows an error indicating that all tournament matches must be completed before the tournament can be finished.
 
 #### View Players and Player Prizes
 
