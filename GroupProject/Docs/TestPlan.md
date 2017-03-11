@@ -64,10 +64,10 @@ problem has been resolved.
 | Test manager UI	| Choose manager mode	| Manager UI | Manager UI   | P  | |
 | Add player to the system	| Enter Name, username, phone number, deck choice | Player was created successfully | Player was created successfully | P | |
 | Add duplicate player to the system | Enter Name, username, phone number, deck choice | Player has exist | Player has exist | P | Player info has already entered |
-| Add username already taken	| Enter Name, username, phone number, deck choice | Player has exist | has exist | P | Player username is used |
+| Add username already taken	| Enter Name, username, phone number, deck choice | Player has exist | Player has exist | P | Player username is used |
 | Delete player	| Detele player | The current player was deleted | The current player was deleted | P | |
 | Creat tournament | Enter house cut, entry fee, add players	| | | P | |
-| Review tournament details | Review tournament details | List of player names, house cut, entry fee, 1st/2nd/3rd prize | List of player names, house cut, entry fee,1st/2nd/3rd prize | P | |
+| Review tournament details | Review tournament details | List of player names, house cut, entry fee, 1st/2nd/3rd prize | List of player names, house cut, entry fee, 1st/2nd/3rd prize | P | |
 | Start tournament| Start tournament | Tournament started | Tournament started | P | |
 | View match list| View match list | List of player matches and status | List of player matches and status | P | |
 | Start match | Choose a match from the list and click start | The status changed to started | The status changed to started| P | When a tournament is onging |
